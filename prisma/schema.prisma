@@ -31,3 +31,5 @@ model Session {
 
   @@index([userId])
 }
+
+// Page content
