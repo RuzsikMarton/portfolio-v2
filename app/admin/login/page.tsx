@@ -1,3 +1,4 @@
+import { LoginForm } from '@/components/admin/login-form';
 import { getAdmin } from '@/lib/session';
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
@@ -30,6 +31,7 @@ async function LoginContent() {
           Administration
         </p>
         <h1 className="mt-3 mb-10 text-4xl font-bold">Log In</h1>
+        <LoginForm />
       </div>
     </main>
   );

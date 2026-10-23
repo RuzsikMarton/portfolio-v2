@@ -2,22 +2,32 @@
 
 @theme {
   --color-bg: #1c1c21;
-  --color-bg-dark: #191920;
+  --color-surface: #1a1c1dff;
+  --color-surface-2: #242728ff;
   --color-border: #49494d;
-  --color-primary: white;
+  --color-line: #323638ff;
+  --color-ink: #e8ebedff;
+  --color-ink-2: #9d9da5ff;
   --color-accent: #00bfff;
+  --color-accent-dark: #264050;
+  --color-accent-ink: #1c1c21;
   --color-accent-hover: #00a3cc;
   --color-secondary: #75c5fb;
   --color-hover: #0ea5e9;
-  --color-hover-dark: #264050;
-  --color-dark: #1c1c21;
+  --color-hover-dark: #8aafc5;
   --color-focus: #0ea5e9;
+  --color-danger: #e7624f;
+
+  --radius-card: 1.75rem;
+  --radius-control: 0.875rem;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @layer base {
   html {
     background: var(--color-bg);
-    color: var(--color-primary);
+    color: var(--color-ink);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
@@ -43,7 +53,7 @@
   }
   ::selection {
     background: var(--color-accent);
-    color: var(--color-primary);
+    color: var(--color-ink);
   }
 }
 
@@ -61,6 +71,30 @@
     .container-page {
       padding-inline: 2rem;
     }
+  }
+}
+
+@layer components {
+  .field-label {
+    @apply mb-2 block text-base font-semibold text-ink;
+  }
+
+  .field-input {
+    @apply block w-full min-h-14 bg-surface-2 rounded-control border border-line px-4 text-lg 
+    text-ink placeholder:text-ink-2/70 transition-[border-color,box-shadow] duration-150 
+    focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20;
+  }
+
+  .primary-button {
+    @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-control bg-accent px-7 text-lg font-semibold 
+    border border-line text-accent-ink transition-[background-color,transform] duration-150 hover:bg-accent-hover active:scale-[0.97] 
+    disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .secondary-button {
+    @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-line bg-surface px-6 text-lg font-semibold 
+    text-ink transition-[background-color,border-color,transform] duration-150 hover:border-ink-2 active:scale-[0.97] 
+    disabled:cursor-not-allowed disabled:opacity-60;
   }
 }
 
