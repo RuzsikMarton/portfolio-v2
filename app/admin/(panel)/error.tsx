@@ -9,14 +9,14 @@ export default function AdminError() {
         <button
           type="button"
           onClick={() => location.reload()}
-          className="inline-flex min-h-14 items-center justify-center rounded-full bg-accent px-7 text-lg font-semibold text-accent-ink"
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-7 text-lg font-semibold text-accent-ink"
         >
           Retry
         </button>
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
           href="/admin"
-          className="inline-flex min-h-14 items-center justify-center rounded-full border border-line px-7 text-lg font-semibold"
+          className="inline-flex min-h-12 items-center justify-center rounded-full border border-line px-7 text-lg font-semibold"
         >
           Home
         </a>

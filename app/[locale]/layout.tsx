@@ -1,24 +1,50 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { locales } from '@/i18n/config';
+import NextTopLoader from 'nextjs-toploader';
+import '/node_modules/flag-icons/css/flag-icons.min.css';
+
+const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: 'Márton Ruzsik - Portfolio',
-  description: 'Developer portfolio using Next.js',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: 'site' });
+  return {
+    metadataBase: new URL(process.env.SITE_URL ?? 'http://localhost:4000'),
+    title: t('name'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: Object.fromEntries(locales.map((lang) => [lang, `/${lang}`])),
+    },
+    openGraph: {
+      title: t('name'),
+      description: t('description'),
+      url: `/${locale}`,
+      siteName: 'Márton Ruzsik - Portfolio',
+      type: 'website',
+      locale: locale,
+    },
+  };
+}
 
 export default async function RootLayout({ children }: LayoutProps<'/[locale]'>) {
   const locale = await getLocale();
   return (
-    <html lang={locale} className="h-full antialiased">
-      <body className="min-h-full flex items-center justify-center">
+    <html
+      lang={locale}
+      className="h-full antialiased"
+      style={{ fontFamily: jetBrainsMono.style.fontFamily }}
+    >
+      <body className="min-h-full">
+        <NextTopLoader color="#00bfff" />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>

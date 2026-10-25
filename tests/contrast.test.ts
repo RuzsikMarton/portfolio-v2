@@ -1,11 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
+// check color contrast for theme colors
+
 const css = readFileSync('app/globals.css', 'utf8');
 
 function block(selector: string) {
   const start = css.indexOf(selector);
-
   if (start === -1) {
     throw new Error(`CSS selector not found: ${selector}`);
   }
@@ -15,9 +16,7 @@ function block(selector: string) {
   if (open === -1 || close === -1) {
     throw new Error(`Invalid CSS block: ${selector}`);
   }
-
   const body = css.slice(open + 1, close);
-
   return Object.fromEntries(
     [...body.matchAll(/--(?:color-)?([\w-]+):\s*(#[0-9a-f]{6}(?:[0-9a-f]{2})?)/gi)].map((m) => [
       m[1],

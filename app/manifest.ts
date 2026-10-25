@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Portfolio',
+    name: 'MR | Portfolio',
     short_name: 'Portfolio',
     lang: 'en',
     start_url: '/admin',

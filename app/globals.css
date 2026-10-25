@@ -1,13 +1,14 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 @theme {
   --color-bg: #1c1c21;
-  --color-surface: #1a1c1dff;
-  --color-surface-2: #242728ff;
+  --color-surface: #1a1c1d;
+  --color-surface-2: #242728;
   --color-border: #49494d;
-  --color-line: #323638ff;
-  --color-ink: #e8ebedff;
-  --color-ink-2: #9d9da5ff;
+  --color-line: #323638;
+  --color-ink: #e8ebed;
+  --color-ink-2: #9d9da5;
   --color-accent: #00bfff;
   --color-accent-dark: #264050;
   --color-accent-ink: #1c1c21;
@@ -22,6 +23,8 @@
   --radius-control: 0.875rem;
 
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --font-sans: 'JetBrains Mono', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -31,6 +34,7 @@
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
+    font-family: var(--font-sans);
   }
   body {
     min-height: 100dvh;

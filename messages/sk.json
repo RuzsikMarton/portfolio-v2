@@ -1,1 +1,19 @@
-{}
+{
+  "site": {
+    "name": "Márton Ruzsik – Vývojárske Portfólio",
+    "description": "Portfólio Mártona Ruzsika: projekty, zručnosti a kontaktné informácie.",
+    "tagline": "Full-stack vývojár, web projekty, portfólio",
+    "city": "Nové zámky"
+  },
+  "nav": {
+    "about": "O mne",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
+  "language": {
+    "language": "Jazyk",
+    "sk": "Slovenčina",
+    "en": "Angličtina",
+    "hu": "Maďarčina"
+  }
+}

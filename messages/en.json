@@ -1,1 +1,19 @@
-{}
+{
+  "site": {
+    "name": "Márton Ruzsik - Developer Portfolio",
+    "description": "Developer portfolio of Márton Ruzsik: projects, skills, and contact information.",
+    "tagline": "Full-stack developer, developer portfolio, web projects",
+    "city": "Nové zámky"
+  },
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "language": {
+    "language": "Language",
+    "sk": "Slovak",
+    "en": "English",
+    "hu": "Hungarian"
+  }
+}

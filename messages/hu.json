@@ -1,1 +1,19 @@
-{}
+{
+  "site": {
+    "name": "Márton Ruzsik - Fejlesztői Portfólió",
+    "description": "Márton Ruzsik fejlesztői portfóliója: projektek és elérhetőség.",
+    "tagline": "Full-stack fejlesztő, portfólió, web projektek",
+    "city": "Érsekújvár"
+  },
+  "nav": {
+    "about": "Rólam",
+    "projects": "Projektek",
+    "contact": "Kapcsolat"
+  },
+  "language": {
+    "language": "Nyelv",
+    "sk": "Szlovák",
+    "en": "Angol",
+    "hu": "Magyar"
+  }
+}

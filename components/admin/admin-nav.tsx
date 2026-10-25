@@ -16,7 +16,7 @@ export function AdminNav() {
   const pathname = usePathname();
   return (
     <ul className="grid grid-cols-4 md:grid-cols-1 md:gap-1">
-      {items.map(({ href, label, Icon, ...rest }) => {
+      {items.map(({ href, label, Icon }) => {
         const prefixes = [href];
         const current =
           !!pathname && prefixes.some((p) => pathname === p || pathname.startsWith(`${p}/`));
