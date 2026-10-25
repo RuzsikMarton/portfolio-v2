@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
 
 @theme {
   --color-bg: #1c1c21;
@@ -65,6 +64,37 @@
   .tabular {
     font-variant-numeric: tabular-nums;
   }
+
+  .container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .basecontainer {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .basecontainer {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .basecontainer {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .basecontainer {
+      max-width: 1200px;
+    }
+  }
+
   .container-page {
     width: 100%;
     max-width: 82rem;
@@ -75,6 +105,13 @@
     .container-page {
       padding-inline: 2rem;
     }
+  }
+
+  .bg-grid-white {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 2px, transparent 2px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 2px, transparent 2px);
+    background-size: 80px 80px;
   }
 }
 
@@ -99,6 +136,10 @@
     @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-line bg-surface px-6 text-lg font-semibold 
     text-ink transition-[background-color,border-color,transform] duration-150 hover:border-ink-2 active:scale-[0.97] 
     disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .link-buttons {
+    @apply p-1.5 flex rounded-full border-2 text-accent hover:text-bg border-accent hover:border-hover items-center justify-center hover:bg-hover active:scale-[0.97] transition-all duration-150;
   }
 }
 

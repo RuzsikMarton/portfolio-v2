@@ -26,9 +26,9 @@ export default function PublicNav() {
 
   return (
     <nav className="py-8 xl:py-12 text-white">
-      <div className="container mx-auto flex justify-between items-center px-4">
+      <div className="container mx-auto flex justify-between items-center">
         <Link href={`/${locale}`}>
-          <h1 className="text-4xl font-semibold">MártonRuzsik</h1>
+          <h1 className="text-4xl font-semibold">MártonRuzsik.</h1>
         </Link>
 
         <div className="hidden xl:flex items-center gap-8 relative">
@@ -36,7 +36,7 @@ export default function PublicNav() {
             {navItems.map((item) => (
               <Link
                 key={item.key}
-                href={`/${locale}#${item.key}`}
+                href={`#${item.key}`}
                 className="relative group capitilize font-medium hover:text-accent transition-all duration-150 active:scale-[0.97]"
               >
                 {item.label}

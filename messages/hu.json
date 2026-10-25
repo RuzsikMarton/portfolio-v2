@@ -15,5 +15,13 @@
     "sk": "Szlovák",
     "en": "Angol",
     "hu": "Magyar"
+  },
+  "hero": {
+    "title": "Szia, itt",
+    "firstname": "Ruzsik",
+    "lastname": "Márton",
+    "motto": "Junior Fullstack Fejlesztő | A fejlesztésre, eredmények szállítására és új dolgok tanulására összpontosítok.",
+    "cv": "Önéletrajz megtekintése",
+    "contact": "Lépj kapcsolatba"
   }
 }

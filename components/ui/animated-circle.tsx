@@ -1,0 +1,77 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { animate } from 'animejs';
+
+export default function AnimatedCircle() {
+  const circle1Ref = useRef<SVGCircleElement>(null);
+  const circle2Ref = useRef<SVGCircleElement>(null);
+  const circle3Ref = useRef<SVGCircleElement>(null);
+
+  useEffect(() => {
+    const circles = [
+      { ref: circle1Ref, duration: 7000, direction: '1turn' },
+      { ref: circle2Ref, duration: 11000, direction: '-1turn' },
+      { ref: circle3Ref, duration: 16000, direction: '1turn' },
+    ];
+
+    const animations = circles.map(({ ref, duration, direction }) => {
+      const element = ref.current;
+      if (!element) return null;
+
+      element.style.transformBox = 'fill-box';
+      element.style.transformOrigin = 'center';
+
+      return animate(element, {
+        rotate: direction,
+        duration,
+        ease: 'linear',
+        loop: true,
+      });
+    });
+
+    return () => {
+      animations.forEach((animation) => animation?.cancel());
+    };
+  }, []);
+
+  return (
+    <svg
+      className="pointer-events-none absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] overflow-visible"
+      viewBox="0 0 506 506"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        ref={circle1Ref}
+        cx="253"
+        cy="253"
+        r="240"
+        stroke="#00bfff"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeDasharray="6 197 38 550"
+      />
+      <circle
+        ref={circle2Ref}
+        cx="253"
+        cy="253"
+        r="240"
+        stroke="#00bfff"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="45 180 12 554"
+      />
+      <circle
+        ref={circle3Ref}
+        cx="253"
+        cy="253"
+        r="240"
+        stroke="#00bfff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeDasharray="20 300 50 421"
+      />
+    </svg>
+  );
+}

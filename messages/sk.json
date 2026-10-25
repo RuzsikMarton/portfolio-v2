@@ -15,5 +15,13 @@
     "sk": "Slovenčina",
     "en": "Angličtina",
     "hu": "Maďarčina"
+  },
+  "hero": {
+    "title": "Ahoj, som",
+    "firstname": "Márton",
+    "lastname": "Ruzsik",
+    "motto": "Junior Fullstack Developer | Zameriavam sa na tvorbu, doručovanie a učenie sa nových vecí.",
+    "cv": "Zobraziť CV",
+    "contact": "Kontaktujte ma"
   }
 }
