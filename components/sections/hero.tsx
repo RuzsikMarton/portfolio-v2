@@ -2,12 +2,12 @@
 import AnimatedCircle from '../ui/animated-circle';
 import { useEffect } from 'react';
 import { animate, scrambleText } from 'animejs';
+import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import {
   IconBrandFacebook,
   IconBrandGithub,
-  IconBrandGithubFilled,
   IconBrandLinkedin,
   IconChevronRight,
 } from '@tabler/icons-react';
@@ -15,8 +15,12 @@ import Image from 'next/image';
 
 const HeroSection = () => {
   const t = useTranslations('hero');
+  const firstnameRef = useRef(null);
+  const lastnameRef = useRef(null);
+
   useEffect(() => {
-    animate('#scramble', {
+    if (!firstnameRef.current || !lastnameRef.current) return;
+    animate([firstnameRef.current, lastnameRef.current], {
       innerHTML: scrambleText({
         revealRate: 2,
         duration: 4000,
@@ -26,8 +30,9 @@ const HeroSection = () => {
       }),
     });
   }, []);
+
   return (
-    <main className="relative min-h-screen bg-black flex items-center justify-center">
+    <main className="relative min-h-screen bg-bg flex items-center justify-center">
       <div className="max-w-7xl w-full">
         <div className="xl:pb-20">
           <div
@@ -45,10 +50,10 @@ const HeroSection = () => {
                     <div className="text-7xl font-bold leading-tight mb-6">
                       {' '}
                       <p>{t('title')}</p>
-                      <p id="scramble" className="text-accent">
+                      <p ref={firstnameRef} className="text-accent">
                         {t('firstname')}
                       </p>
-                      <p id="scramble" className="text-accent">
+                      <p ref={lastnameRef} className="text-accent">
                         {t('lastname')}
                       </p>
                     </div>

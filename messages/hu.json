@@ -23,5 +23,30 @@
     "motto": "Junior Fullstack Fejlesztő | A fejlesztésre, eredmények szállítására és új dolgok tanulására összpontosítok.",
     "cv": "Önéletrajz megtekintése",
     "contact": "Lépj kapcsolatba"
+  },
+  "about": {
+    "age": "Kor",
+    "experience": "Tapasztalat évei",
+    "projects": "Projektek, amelyeken dolgoztam",
+    "deployed": "Közzétett projektek",
+    "education": "Tanulmányok"
+  },
+  "highSchool": {
+    "title": "Középiskola",
+    "degree": "Középiskolai bizonyítvány - Villamosmérnöki - Informatikai szakirány",
+    "institution": "Spojená škola, Komárňanská 28, Nové Zámky (Jedlik Ányos Elektrotechnikai Szakközépiskola)",
+    "year": "Sep 1, 2014 - Jun, 2018"
+  },
+  "bsc": {
+    "title": "Bsc - Egyetem",
+    "degree": "BSc - Alkalmazott informatika, Közgazdaságtudományi és Informatikai Kar",
+    "institution": "Selye János Egyetem, Komárno",
+    "year": "Sep, 2019 - Jun, 2023"
+  },
+  "msc": {
+    "title": "Msc - Egyetem",
+    "degree": "MSc - Alkalmazott informatika, Közgazdaságtudományi és Informatikai Kar",
+    "institution": "Selye János Egyetem, Komárno",
+    "year": "Sep, 2023 - Jun, 2025"
   }
 }

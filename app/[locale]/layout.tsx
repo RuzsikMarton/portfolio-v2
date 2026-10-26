@@ -40,7 +40,7 @@ export default async function RootLayout({ children }: LayoutProps<'/[locale]'>)
   return (
     <html
       lang={locale}
-      className="h-full antialiased"
+      className="h-full antialiased scroll-smooth"
       style={{ fontFamily: jetBrainsMono.style.fontFamily }}
     >
       <body className="min-h-full">

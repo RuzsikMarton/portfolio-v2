@@ -34,6 +34,7 @@
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
     font-family: var(--font-sans);
+    scroll-behavior: smooth;
   }
   body {
     min-height: 100dvh;
@@ -112,6 +113,32 @@
       linear-gradient(to right, rgb(255 255 255 / 0.05) 2px, transparent 2px),
       linear-gradient(to bottom, rgb(255 255 255 / 0.05) 2px, transparent 2px);
     background-size: 80px 80px;
+  }
+
+  @property --num {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+  }
+
+  .number-animation {
+    --num: 0;
+    counter-reset: num var(--num);
+  }
+
+  .number-animation::after {
+    content: counter(num);
+    animation: count 2s ease-out forwards;
+  }
+
+  @keyframes count {
+    to {
+      --num: var(--target);
+    }
+  }
+
+  .animate-number {
+    animation: counter--num 1s ease-out;
   }
 }
 

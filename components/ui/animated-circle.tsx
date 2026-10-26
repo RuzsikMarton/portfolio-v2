@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { animate } from 'animejs';
 
+// Animated rotating circles background around hero image
 export default function AnimatedCircle() {
   const circle1Ref = useRef<SVGCircleElement>(null);
   const circle2Ref = useRef<SVGCircleElement>(null);
@@ -10,9 +11,9 @@ export default function AnimatedCircle() {
 
   useEffect(() => {
     const circles = [
-      { ref: circle1Ref, duration: 7000, direction: '1turn' },
-      { ref: circle2Ref, duration: 11000, direction: '-1turn' },
-      { ref: circle3Ref, duration: 16000, direction: '1turn' },
+      { ref: circle1Ref, duration: 21000, direction: '1turn' },
+      { ref: circle2Ref, duration: 24000, direction: '-1turn' },
+      { ref: circle3Ref, duration: 30000, direction: '1turn' },
     ];
 
     const animations = circles.map(({ ref, duration, direction }) => {
@@ -25,7 +26,7 @@ export default function AnimatedCircle() {
       return animate(element, {
         rotate: direction,
         duration,
-        ease: 'linear',
+        ease: 'outBounce',
         loop: true,
       });
     });

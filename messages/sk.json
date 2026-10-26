@@ -23,5 +23,30 @@
     "motto": "Junior Fullstack Developer | Zameriavam sa na tvorbu, doručovanie a učenie sa nových vecí.",
     "cv": "Zobraziť CV",
     "contact": "Kontaktujte ma"
+  },
+  "about": {
+    "age": "Vek",
+    "experience": "Roky skúseností",
+    "projects": "Projekty na ktorých som pracoval",
+    "deployed": "Nasadené projekty",
+    "education": "Vzdelanie"
+  },
+  "highSchool": {
+    "title": "Stredná škola",
+    "degree": "Stredoškolský diplom - Elektrotechnika",
+    "institution": "Spojená škola, Komárňanská 28, Nové Zámky (Stredná priemyselná škola elektrotechnická S. A. Jedlika)",
+    "year": "Sep 1, 2014 - Jun, 2018"
+  },
+  "bsc": {
+    "title": "Bc. - Univerzita",
+    "degree": "Bc - Aplikovaná informatika, Fakulta ekonómie a informatiky",
+    "institution": "Univerzita J. Selyeho, Komárno",
+    "year": "Sep, 2019 - Jun, 2023"
+  },
+  "msc": {
+    "title": "Mgr. - Univerzita",
+    "degree": "Mgr - Aplikovaná informatika, Fakulta ekonómie a informatiky",
+    "institution": "Univerzita J. Selyeho, Komárno",
+    "year": "Sep, 2023 - Jun, 2025"
   }
 }

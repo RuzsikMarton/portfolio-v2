@@ -23,5 +23,30 @@
     "motto": "Junior Fullstack Developer | Focused on building, delivering, and continuously learning new things.",
     "cv": "View CV",
     "contact": "Contact Me"
+  },
+  "about": {
+    "age": "Age",
+    "experience": "Years of experience",
+    "projects": "Projects worked on",
+    "deployed": "Projects deployed",
+    "education": "Education"
+  },
+  "highSchool": {
+    "title": "High School",
+    "degree": "High School Diploma - Electrical Engineering",
+    "institution": "Spojená škola, Komárňanská 28, Nové Zámky (Secondary Industrial School of Electrical Engineering S. A. Jedlika)",
+    "year": "Sep 1, 2015 - Jun, 2018"
+  },
+  "bsc": {
+    "title": "Bsc - University",
+    "degree": "BSc in Computer Science - Faculty of Economics and Informatics",
+    "institution": "J. Selye University, Komárno",
+    "year": "Sep, 2019 - Jun, 2023"
+  },
+  "msc": {
+    "title": "Msc - University",
+    "degree": "MSc in Computer Science - Faculty of Economics and Informatics",
+    "institution": "J. Selye University, Komárno",
+    "year": "Sep, 2023 - Jun, 2025"
   }
 }
