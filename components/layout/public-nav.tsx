@@ -25,9 +25,9 @@ export default function PublicNav() {
   ];
 
   return (
-    <nav className="py-8 xl:py-12 text-white">
+    <nav aria-label="Main navigation" className="py-8 xl:py-12 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href={`/${locale}`}>
+        <Link aria-label="Home" href={`/${locale}`}>
           <h1 className="text-4xl font-semibold">MártonRuzsik.</h1>
         </Link>
 
@@ -35,6 +35,7 @@ export default function PublicNav() {
           <div className="flex gap-12">
             {navItems.map((item) => (
               <Link
+                aria-label={item.label}
                 key={item.key}
                 href={`#${item.key}`}
                 className="relative group capitilize font-medium hover:text-accent transition-all duration-150 active:scale-[0.97]"
@@ -44,7 +45,7 @@ export default function PublicNav() {
               </Link>
             ))}
           </div>
-          <LanguageSelector />
+          <LanguageSelector aria-label="Language" />
         </div>
         <MobileNav navItems={navItems} />
       </div>

@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-bg: #1c1c21;
+  --color-bg: #15151f;
+  /* lighter bg #1c1c21*/
   --color-surface: #1a1c1d;
   --color-surface-2: #242728;
   --color-border: #49494d;
@@ -27,6 +28,11 @@
 }
 
 @layer base {
+  :root {
+    scrollbar-color: var(--color-accent) var(--color-hover);
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+  }
   html {
     background: var(--color-bg);
     color: var(--color-ink);
@@ -34,7 +40,6 @@
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
     font-family: var(--font-sans);
-    scroll-behavior: smooth;
   }
   body {
     min-height: 100dvh;
@@ -115,30 +120,33 @@
     background-size: 80px 80px;
   }
 
-  @property --num {
-    syntax: '<integer>';
-    initial-value: 0;
-    inherits: false;
+  .reveal-section {
+    opacity: 0;
+    transform: translateY(100px);
   }
 
-  .number-animation {
-    --num: 0;
-    counter-reset: num var(--num);
+  .logo path {
+    fill: #00bfff;
   }
 
-  .number-animation::after {
-    content: counter(num);
-    animation: count 2s ease-out forwards;
+  .spin {
+    animation: spin-blur 0.5s ease-out both;
   }
 
-  @keyframes count {
-    to {
-      --num: var(--target);
+  @keyframes spin-blur {
+    0% {
+      transform: rotate(0deg);
+      filter: blur(0);
     }
-  }
 
-  .animate-number {
-    animation: counter--num 1s ease-out;
+    50% {
+      filter: blur(1.5px);
+    }
+
+    100% {
+      transform: rotate(360deg);
+      filter: blur(0);
+    }
   }
 }
 

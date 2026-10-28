@@ -48,5 +48,14 @@
     "degree": "MSc - Alkalmazott informatika, Közgazdaságtudományi és Informatikai Kar",
     "institution": "Selye János Egyetem, Komárno",
     "year": "Sep, 2023 - Jun, 2025"
+  },
+  "tech": {
+    "title": "Technológiai stackem",
+    "description": "Azok a technológiák, amelyeket leggyakrabban használok modern webalkalmazások tervezéséhez, fejlesztéséhez és üzembehelyezéséhez.",
+    "subtitle": "További technológiák"
+  },
+  "projects": {
+    "title": "Néhány projektem",
+    "button": "Mutass többet"
   }
 }

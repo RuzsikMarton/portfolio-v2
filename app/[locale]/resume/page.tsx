@@ -6,11 +6,11 @@ const ResumePage = async () => {
 
   const getPdfSrc = () => {
     const lang = locale || 'en';
-    return `/cv/${lang}`;
+    return `/resume/${lang}`;
   };
 
   const getFallbackPdfSrc = () => {
-    return '/cv/MLRuzsik_CVen.pdf';
+    return '/resume/MLRuzsik_CVen.pdf';
   };
 
   // To DO get pdf from server based on locale

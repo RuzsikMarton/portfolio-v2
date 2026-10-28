@@ -223,6 +223,9 @@ importers:
       '@tabler/icons-react':
         specifier: ^3.49.0
         version: 3.49.0(react@19.3.0)
+      '@thesvg/react':
+        specifier: ^4.0.0
+        version: 4.0.0(react@19.3.0)
       animejs:
         specifier: ^4.5.0
         version: 4.5.0
@@ -1570,6 +1573,12 @@ packages:
 
   '@tailwindcss/turbopack@4.3.3':
     resolution: {integrity: sha512-FgL4wRgItNdXcDjcgYUSd59gNsWqNVK4GotjZimZMmt7OOIkRNqH2QEUcRXLdBDXvwTsi5rkYxDxzfrFUkmObQ==}
+
+  '@thesvg/react@4.0.0':
+    resolution: {integrity: sha512-EQMffy5PO8+yJg2EM00H3ag750ic6mi4Oyh1JXXEhRjyGU1TGR4+NrvkKm4jlkvptsUKysD5G87ppKFPFO01wg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: '>=18'
 
   '@tybys/wasm-util@0.10.4':
     resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
@@ -4780,6 +4789,10 @@ snapshots:
       '@tailwindcss/node': 4.3.3
       '@tailwindcss/oxide': 4.3.3
       tailwindcss: 4.3.3
+
+  '@thesvg/react@4.0.0(react@19.3.0)':
+    dependencies:
+      react: 19.3.0
 
   '@tybys/wasm-util@0.10.4':
     dependencies:

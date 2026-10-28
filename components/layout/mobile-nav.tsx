@@ -23,6 +23,7 @@ const MobileNav = ({ navItems }: NavMenuProps) => {
     <div className="relative block xl:hidden">
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger
+          aria-label="Menu"
           render={
             <button onClick={() => setMenuOpen(!menuOpen)} className="cursor-pointer">
               <IconMenu3
@@ -47,7 +48,8 @@ const MobileNav = ({ navItems }: NavMenuProps) => {
             <div className="w-full h-px bg-border my-4"></div>
             {navItems.map((item) => (
               <Link
-                href={`#${item.key}`}
+                aria-label={item.label}
+                href={`/#${item.key}`}
                 key={item.key}
                 className="relative group capitilize text-xl font-medium hover:text-accent transition-all duration-150 active:scale-[0.97]"
                 onClick={() => setMenuOpen(false)}

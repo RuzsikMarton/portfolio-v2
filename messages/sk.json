@@ -48,5 +48,14 @@
     "degree": "Mgr - Aplikovaná informatika, Fakulta ekonómie a informatiky",
     "institution": "Univerzita J. Selyeho, Komárno",
     "year": "Sep, 2023 - Jun, 2025"
+  },
+  "tech": {
+    "title": "Môj technologický stack",
+    "description": "Technológie, ktoré najčastejšie používam pri návrhu, vývoji a nasadzovaní aplikácií",
+    "subtitle": "Ďalšie technológie"
+  },
+  "projects": {
+    "title": "Niektoré z mojich projektov",
+    "button": "Zobraziť viac"
   }
 }

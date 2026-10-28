@@ -48,5 +48,14 @@
     "degree": "MSc in Computer Science - Faculty of Economics and Informatics",
     "institution": "J. Selye University, Komárno",
     "year": "Sep, 2023 - Jun, 2025"
+  },
+  "tech": {
+    "title": "Technologies I work with",
+    "description": "The tools I use most to build full-stack applications, create intuitive experiences, and manage data efficiently",
+    "subtitle": "Also familiar with"
+  },
+  "projects": {
+    "title": "Some things I've built",
+    "button": "Show more"
   }
 }

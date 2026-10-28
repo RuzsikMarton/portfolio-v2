@@ -34,7 +34,7 @@ const HeroSection = () => {
   return (
     <main className="relative min-h-screen bg-bg flex items-center justify-center">
       <div className="max-w-7xl w-full">
-        <div className="xl:pb-20">
+        <div className="xl:pb-8">
           <div
             aria-hidden="true"
             className="h-screen w-full bg-bg pointer-events-none absolute inset-0 bg-grid-white"
@@ -46,8 +46,10 @@ const HeroSection = () => {
               <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
                 <div className="text-center xl:text-left order-2 xl:order-none">
                   <div className="leading-loose">
-                    <span className="text-2xl">Fullstack Developer</span>
-                    <div className="text-7xl font-bold leading-tight mb-6">
+                    <span title="Fullstack Developer" className="text-2xl">
+                      Fullstack Developer
+                    </span>
+                    <div title="Márton Ruzsik" className="text-7xl font-bold leading-tight mb-6">
                       {' '}
                       <p>{t('title')}</p>
                       <p ref={firstnameRef} className="text-accent">
@@ -116,6 +118,7 @@ const HeroSection = () => {
                           className="rounded-full object-cover"
                           width={500}
                           height={500}
+                          preload
                         />
                       </div>
                     </div>

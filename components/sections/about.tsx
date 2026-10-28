@@ -35,7 +35,7 @@ const AboutSection = () => {
       animate(section, {
         translateY: [100, 0],
         opacity: [0, 1],
-        duration: 1000,
+        duration: 500,
         ease: 'easeOut',
       });
       observer.disconnect();
@@ -99,7 +99,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" ref={sectionRef}>
+    <section id="about" ref={sectionRef} className="reveal-section">
       <div className="container h-full w-full mx-auto mt-12">
         <div className="group flex flex-wrap gap-6 justify-between mb-32">
           {aboutSection.map((item, i) => (

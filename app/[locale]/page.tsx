@@ -1,17 +1,16 @@
 import PublicNav from '@/components/layout/public-nav';
 import AboutSection from '@/components/sections/about';
-import ContactSection from '@/components/sections/contact';
 import HeroSection from '@/components/sections/hero';
 import ProjectsSection from '@/components/sections/projects';
+import TechSection from '@/components/sections/tech';
 
 export default function Home() {
   return (
     <>
-      <PublicNav />
       <HeroSection />
       <AboutSection />
+      <TechSection />
       <ProjectsSection />
-      <ContactSection />
     </>
   );
 }
