@@ -57,5 +57,10 @@
   "projects": {
     "title": "Some things I've built",
     "button": "Show more"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "description": "I'm currently exploring new opportunities — let's connect if you think I'd be a great fit for your team or project.",
+    "button": "Let's talk"
   }
 }

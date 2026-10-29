@@ -7,6 +7,7 @@ import { locales } from '@/i18n/config';
 import NextTopLoader from 'nextjs-toploader';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import PublicNav from '@/components/layout/public-nav';
+import Footer from '@/components/layout/footer';
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
 

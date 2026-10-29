@@ -57,5 +57,10 @@
   "projects": {
     "title": "Néhány projektem",
     "button": "Mutass többet"
+  },
+  "contact": {
+    "title": "Lépj kapcsolatba",
+    "description": "Jelenleg új lehetőségeket keresek — lépjünk kapcsolatba, ha úgy gondolja, hogy nagyszerűen illenének a csapatába vagy projektjébe.",
+    "button": "Beszéljünk"
   }
 }

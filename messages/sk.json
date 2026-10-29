@@ -57,5 +57,10 @@
   "projects": {
     "title": "Niektoré z mojich projektov",
     "button": "Zobraziť viac"
+  },
+  "contact": {
+    "title": "Kontaktujte ma",
+    "description": "Aktuálne hľadám nové príležitosti — kontaktujte ma, ak si myslíte, že by som bol pre váš tím alebo projekt vhodný.",
+    "button": "Poďme sa porozprávať"
   }
 }
