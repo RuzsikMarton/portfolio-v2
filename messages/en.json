@@ -54,12 +54,21 @@
     "description": "The tools I use most to build full-stack applications, create intuitive experiences, and manage data efficiently",
     "subtitle": "Also familiar with"
   },
+  "notFound": {
+    "title": "Lost in the void",
+    "text": "The page seems to have vanished into another dimension. Try going back home.",
+    "home": "Back to home"
+  },
+  "projectsPage": {
+    "title": "Projects",
+    "wip": "This page is a work in progress. Check back soon!"
+  },
   "projects": {
     "title": "Some things I've built",
     "featured": "Featured Project",
     "aria-github": "GitHub",
     "aria-live": "external website",
-    "button": "Show more"
+    "button": "Browse projects"
   },
   "contact": {
     "title": "Get in touch",

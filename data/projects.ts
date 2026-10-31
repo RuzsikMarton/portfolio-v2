@@ -20,26 +20,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Workout Tracker',
-    slug: 'workout-tracker',
-    sk: {
-      description:
-        'Komplexná aplikácia na sledovanie tréningov s rozsiahlu databázou cvikov. Používatelia môžu zaznamenávať tréningové jednotky výberom cvikov a zadávaním parametrov sérií. Aplikácia podporuje dlhodobé sledovanie progresu a vyhodnocovanie výkonnosti. Plánované funkcie zahŕňajú sledovanie najlepších a posledných výkonov pre každý cvik.',
-    },
-    en: {
-      description:
-        'A workout tracking application built with Next.js, Prisma and PostgreSQL.  Features an extensive exercise database where users can view their best and last workout performance for each exercise. Users can easily track their workouts by selecting exercises and recording sets, reps, and weights, making it simple to monitor progress over time.',
-    },
-    hu: {
-      description:
-        'Egy teljes funkcionalitású edzéskövető alkalmazás, amely Next.js-sel, Tailwind CSS-sel és PostgreSQL-lel készült. Lehetővé teszi a felhasználók számára, hogy regisztráljanak, bejelentkezzenek, edzéseket hozzanak létre, nyomon kövessék fejlődésüket, és részletes statisztikákat tekintsenek meg az edzéseikről.',
-    },
-    tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-    image: '/workoutracker1.webp',
-    githubUrl: 'https://github.com/RuzsikMarton/workout-tracker',
-    liveUrl: 'https://workoutracker.martonruzsik.sk',
-  },
-  {
     title: 'Evidio',
     slug: 'evidio',
     sk: {
@@ -60,6 +40,26 @@ export const projects: Project[] = [
     liveUrl: 'https://evidio.rk-r.sk',
   },
   {
+    title: 'Workout Tracker',
+    slug: 'workout-tracker',
+    sk: {
+      description:
+        'Komplexná aplikácia na sledovanie tréningov s rozsiahlu databázou cvikov. Používatelia môžu zaznamenávať tréningové jednotky výberom cvikov a zadávaním parametrov sérií. Aplikácia podporuje dlhodobé sledovanie progresu a vyhodnocovanie výkonnosti. Plánované funkcie zahŕňajú sledovanie najlepších a posledných výkonov pre každý cvik.',
+    },
+    en: {
+      description:
+        'A workout tracking application built with Next.js, Prisma and PostgreSQL.  Features an extensive exercise database where users can view their best and last workout performance for each exercise. Users can easily track their workouts by selecting exercises and recording sets, reps, and weights, making it simple to monitor progress over time.',
+    },
+    hu: {
+      description:
+        'Egy teljes funkcionalitású edzéskövető alkalmazás, amely Next.js-sel, Tailwind CSS-sel és PostgreSQL-lel készült. Lehetővé teszi a felhasználók számára, hogy regisztráljanak, bejelentkezzenek, edzéseket hozzanak létre, nyomon kövessék fejlődésüket, és részletes statisztikákat tekintsenek meg az edzéseikről.',
+    },
+    tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+    image: '/workoutracker.png',
+    githubUrl: 'https://github.com/RuzsikMarton/workout-tracker',
+    liveUrl: 'https://workoutracker.martonruzsik.sk',
+  },
+  {
     title: 'matrixvis - JS library',
     slug: 'matrixvis',
     sk: {
@@ -75,7 +75,7 @@ export const projects: Project[] = [
         'A MatrixVis egy JavaScript könyvtár, amely interaktív algoritmus-vizualizációk létrehozására készült mátrixok segítségével. Egyszerűsíti a mátrixalapú algoritmusok bemutatását, így ideális eszköz oktatók, diákok és fejlesztők számára.',
     },
     tags: ['JavaScript', 'Canvas', 'Thesis'],
-    image: '/mgr.webp',
+    image: '/matrixvis.png',
     githubUrl: 'https://github.com/RuzsikMarton/matrixvis',
   },
 ];

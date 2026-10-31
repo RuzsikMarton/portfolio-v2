@@ -34,19 +34,19 @@ const HeroSection = () => {
     animate(shadowRef.current, {
       opacity: [0, 1],
       duration: 1000,
-      delay: 300,
+      delay: 1000,
       ease: 'out(2)',
     });
     animate(borderRef.current, {
       opacity: [0, 1],
       duration: 1000,
-      delay: 500,
+      delay: 1300,
       ease: 'out(2)',
     });
     animate(imageRef.current, {
       opacity: [0, 1],
       duration: 2000,
-      delay: 1000,
+      delay: 1600,
       ease: 'out(2)',
     });
     animate([firstnameRef.current, lastnameRef.current], {

@@ -54,16 +54,25 @@
     "description": "Technológie, ktoré najčastejšie používam pri návrhu, vývoji a nasadzovaní aplikácií",
     "subtitle": "Ďalšie technológie"
   },
+  "notFound": {
+    "title": "Stratené v prázdnote",
+    "text": "Zdá sa, že stránka zmizla v inej dimenzii. Skús sa vrátiť na hlavnú stránku.",
+    "home": "Späť na úvod"
+  },
+  "projectsPage": {
+    "title": "Projekty",
+    "wip": "Táto stránka je vo vývoji. Vráťte sa čoskoro!"
+  },
   "projects": {
     "title": "Niektoré z mojich projektov",
     "featured": "Vybraný projekt",
     "aria-github": "GitHub",
     "aria-live": "externá stránka",
-    "button": "Zobraziť viac"
+    "button": "Viac projektov"
   },
   "contact": {
     "title": "Kontaktujte ma",
     "description": "Aktuálne hľadám nové príležitosti — kontaktujte ma, ak si myslíte, že by som bol pre váš tím alebo projekt vhodný.",
-    "button": "Poďme sa porozprávať"
+    "button": "Napíšte mi"
   }
 }

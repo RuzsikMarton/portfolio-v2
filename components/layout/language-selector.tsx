@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { IconCheck, IconChevronDown, IconWorld } from '@tabler/icons-react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -13,6 +13,9 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
 
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const pathname = usePathname();
+  console.log(pathname);
 
   const languages = [
     { code: 'sk', lang: t('sk'), flag: 'sk' },
@@ -77,7 +80,7 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
                 onSelect?.();
 
                 if (locale !== language.code) {
-                  router.replace('/', {
+                  router.replace(pathname || '/', {
                     locale: language.code,
                   });
                 }

@@ -54,12 +54,21 @@
     "description": "Azok a technológiák, amelyeket leggyakrabban használok modern webalkalmazások tervezéséhez, fejlesztéséhez és üzembehelyezéséhez.",
     "subtitle": "További technológiák"
   },
+  "notFound": {
+    "title": "Elveszett az ürességben",
+    "text": "Úgy tűnik, az oldal egy másik dimenzióba tűnt el. Próbálj visszatérni a főoldalra.",
+    "home": "Vissza a főoldalra"
+  },
+  "projectsPage": {
+    "title": "Projektek",
+    "wip": "Ez az oldal fejlesztés alatt áll. Nézz vissza hamarosan!"
+  },
   "projects": {
     "title": "Néhány projektem",
     "featured": "Kiemelt projekt",
     "aria-github": "GitHub",
     "aria-live": "külső oldal",
-    "button": "Mutass többet"
+    "button": "Projektek böngészése"
   },
   "contact": {
     "title": "Lépj kapcsolatba",
