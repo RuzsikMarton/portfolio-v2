@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Not Found',
+  title: '404 - Not Found | Márton Ruzsik',
   description: 'The page you are looking for does not exist.',
 };
 

@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
+import { IconArrowRight, IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
 import { Locale } from '@/i18n/config';
 import Image from 'next/image';
 
@@ -165,7 +165,7 @@ const ProjectsSection = () => {
                   <span className="pointer-events-none rounded-xl absolute inset-0 bg-accent/20 mix-blend-screen transition-opacity duration-500 group-hover:opacity-0" />
                 </Link>
                 {/* overlay mobile */}
-                <div className="pointer-events-none absolute inset-0 bg-bg/70 md:hidden" />
+                <div className="pointer-events-none absolute inset-0 bg-bg/85 md:hidden" />
               </div>
             </li>
           );
@@ -174,9 +174,19 @@ const ProjectsSection = () => {
       <div ref={buttonRef} className="flex items-center justify-center opacity-0 mt-12">
         <Link
           href="/projects"
-          className="self-center px-4 py-2 font-semibold border border-line rounded-full text-ink bg-transparent hover:text-bg hover:bg-accent active:scale-[0.97] transition-all duration-150 active:bg-hover active:border-hover cursor-pointer"
+          className="group bg-bg relative w-auto overflow-hidden border border-line rounded-full px-6 py-2 text-center font-semibold"
         >
-          {t('button')}
+          <div className="flex items-center justify-center gap-2">
+            <div className="bg-accent size-2 rounded-full transition-all duration-300 group-hover:scale-[100]" />
+            <span className="inline-block transition-all duration-300 group-hover-tranlate-x-12 group-hover:opacity-0">
+              {' '}
+              {t('button')}
+            </span>
+          </div>
+          <div className="text-ink absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:text-surface group-hover:opacity-100">
+            <span>{t('button')}</span>
+            <IconArrowRight className="size-4" />
+          </div>
         </Link>
       </div>
     </section>

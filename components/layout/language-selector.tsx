@@ -8,14 +8,11 @@ import { useEffect, useRef, useState } from 'react';
 
 const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('language');
-
-  const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const pathname = usePathname();
-  console.log(pathname);
+  const [open, setOpen] = useState(false);
 
   const languages = [
     { code: 'sk', lang: t('sk'), flag: 'sk' },
@@ -80,7 +77,7 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
                 onSelect?.();
 
                 if (locale !== language.code) {
-                  router.replace(pathname || '/', {
+                  router.replace(pathname ?? '/', {
                     locale: language.code,
                   });
                 }
