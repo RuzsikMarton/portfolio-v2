@@ -23,20 +23,20 @@ const ContactSection = () => {
         if (!entry.isIntersecting) return;
 
         animate(contact, {
-          translateY: [100, 0],
+          translateY: [50, 0],
           opacity: [0, 1],
-          duration: 500,
+          duration: 800,
           ease: 'easeOut',
         });
         observer.disconnect();
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     observer.observe(contact);
   }, []);
 
   return (
-    <section id="contact" className="relative bg-bg container mx-auto py-8 mt-16">
+    <section id="contact" className="relative bg-bg container mx-auto py-8 mt-24">
       <div ref={contactRef} className="relative flex flex-col items-center z-10 reveal-section">
         <h1 className="text-5xl font-semibold">{t('title')}</h1>
         <p className="text-ink md:mt-10 my-5 text-center max-w-2xl">{t('description')}</p>

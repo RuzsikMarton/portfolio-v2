@@ -1,41 +1,21 @@
-import { getLocale } from 'next-intl/server';
+import { Suspense } from 'react';
+import ResumeViewer from '@/components/ui/resume-viewer';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return { title: 'Márton Ruzsik | Resume' };
+}
 
 const ResumePage = async () => {
-  const locale = await getLocale();
-  const pdfError = true;
-
-  const getPdfSrc = () => {
-    const lang = locale || 'en';
-    return `/resume/${lang}`;
-  };
-
-  const getFallbackPdfSrc = () => {
-    return '/resume/MLRuzsik_CVen.pdf';
-  };
-
   // To DO get pdf from server based on locale
   return (
-    <div className="h-screen overflow-hidden">
-      {!pdfError ? (
-        <iframe
-          id="pdfEmbed"
-          src={getPdfSrc()}
-          width="100%"
-          height="100%"
-          style={{ border: 'none' }}
-          title="CV PDF"
-        />
-      ) : (
-        <iframe
-          id="pdfEmbed"
-          src={getFallbackPdfSrc()}
-          width="100%"
-          height="100%"
-          style={{ border: 'none' }}
-          title="CV PDF"
-        />
-      )}
-    </div>
+    <Suspense
+      fallback={
+        <div className="h-screen min-h-[500px] rounded-xl border border-line bg-bg animate-pulse" />
+      }
+    >
+      <ResumeViewer />
+    </Suspense>
   );
 };
 

@@ -1,5 +1,5 @@
 'use client';
-import AnimatedCircle from '../ui/animated-circle';
+import AnimatedCircle from '../animations/animated-circle';
 import { useEffect } from 'react';
 import { animate, scrambleText } from 'animejs';
 import { useRef } from 'react';
@@ -17,9 +17,38 @@ const HeroSection = () => {
   const t = useTranslations('hero');
   const firstnameRef = useRef(null);
   const lastnameRef = useRef(null);
+  const borderRef = useRef(null);
+  const shadowRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
-    if (!firstnameRef.current || !lastnameRef.current) return;
+    if (
+      !firstnameRef.current ||
+      !lastnameRef.current ||
+      !borderRef.current ||
+      !shadowRef.current ||
+      !imageRef.current
+    )
+      return;
+
+    animate(shadowRef.current, {
+      opacity: [0, 1],
+      duration: 1000,
+      delay: 300,
+      ease: 'out(2)',
+    });
+    animate(borderRef.current, {
+      opacity: [0, 1],
+      duration: 1000,
+      delay: 500,
+      ease: 'out(2)',
+    });
+    animate(imageRef.current, {
+      opacity: [0, 1],
+      duration: 2000,
+      delay: 1000,
+      ease: 'out(2)',
+    });
     animate([firstnameRef.current, lastnameRef.current], {
       innerHTML: scrambleText({
         revealRate: 2,
@@ -109,16 +138,20 @@ const HeroSection = () => {
                 </div>
                 <div className="order-1 xl:order-0 mb-8 xl:mb-0 flex justify-center xl:justify-start">
                   <div className="relative w-72 h-72 xl:w-120 xl:h-120">
-                    <AnimatedCircle />
-                    <div className="w-full h-full rounded-full p-3 shadow-md shadow-accent">
+                    <AnimatedCircle borderRef={borderRef} />
+                    <div
+                      className="w-full h-full rounded-full p-3 shadow-md shadow-accent opacity-0"
+                      ref={shadowRef}
+                    >
                       <div className="w-full h-full rounded-full relative overflow-hidden">
                         <Image
                           src="/github.webp"
                           alt="Me"
-                          className="rounded-full object-cover"
+                          className="rounded-full object-cover opacity-0"
                           width={500}
                           height={500}
                           preload
+                          ref={imageRef}
                         />
                       </div>
                     </div>

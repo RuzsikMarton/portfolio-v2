@@ -6,8 +6,6 @@ const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;
 };
 
-const connectionString = `${process.env.DATABASE_URL}`;
-
 function createClient() {
   const connectionString = process.env.DATABASE_URL;
 

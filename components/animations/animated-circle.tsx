@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { Ref, useEffect, useRef } from 'react';
 import { animate } from 'animejs';
 
 // Animated rotating circles background around hero image
-export default function AnimatedCircle() {
+export default function AnimatedCircle({ borderRef }: { borderRef?: Ref<SVGSVGElement> }) {
   const circle1Ref = useRef<SVGCircleElement>(null);
   const circle2Ref = useRef<SVGCircleElement>(null);
   const circle3Ref = useRef<SVGCircleElement>(null);
@@ -38,10 +38,11 @@ export default function AnimatedCircle() {
 
   return (
     <svg
-      className="pointer-events-none absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] overflow-visible"
+      className="pointer-events-none absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] overflow-visible opacity-0"
       viewBox="0 0 506 506"
       fill="none"
       aria-hidden="true"
+      ref={borderRef}
     >
       <circle
         ref={circle1Ref}

@@ -38,14 +38,14 @@ const TechSection = () => {
         if (!entry.isIntersecting) return;
 
         animate(section, {
-          translateY: [100, 0],
+          translateY: [50, 0],
           opacity: [0, 1],
-          duration: 1000,
+          duration: 800,
           ease: 'easeOut',
         });
         observer.disconnect();
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     observer.observe(section);
   }, []);

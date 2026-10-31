@@ -29,17 +29,20 @@ const AboutSection = () => {
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
 
-      animate(section, {
-        translateY: [100, 0],
-        opacity: [0, 1],
-        duration: 500,
-        ease: 'easeOut',
-      });
-      observer.disconnect();
-    });
+        animate(section, {
+          translateY: [50, 0],
+          opacity: [0, 1],
+          duration: 800,
+          ease: 'easeOut',
+        });
+        observer.disconnect();
+      },
+      { threshold: 0.15 }
+    );
     observer.observe(section);
   }, []);
 

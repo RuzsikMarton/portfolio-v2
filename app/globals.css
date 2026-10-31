@@ -28,11 +28,23 @@
 }
 
 @layer base {
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation: duration 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   :root {
     scrollbar-color: var(--color-accent) var(--color-hover);
     scrollbar-width: thin;
     scroll-behavior: smooth;
   }
+
   html {
     background: var(--color-bg);
     color: var(--color-ink);
@@ -122,7 +134,7 @@
 
   .reveal-section {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(50px);
   }
 
   .logo path {
@@ -175,16 +187,5 @@
 
   .link-buttons {
     @apply p-1.5 flex rounded-full border-2 text-accent hover:text-bg border-accent hover:border-hover items-center justify-center hover:bg-hover active:scale-[0.97] transition-all duration-150;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

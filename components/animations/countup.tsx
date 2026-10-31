@@ -1,6 +1,6 @@
 'use client';
 
-import { animate, cubicBezier, spring } from 'animejs';
+import { animate, spring } from 'animejs';
 import { useEffect, useRef } from 'react';
 
 type CountUpProps = {

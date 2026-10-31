@@ -33,3 +33,55 @@ model Session {
 }
 
 // Page content
+
+enum Locale {
+  en
+  sk
+  hu
+}
+
+model About {
+  id         Int    @id @default(autoincrement())
+  age        String
+  projects   String
+  deployed   String
+  experience String
+}
+
+model Project {
+  id       Int      @id @default(autoincrement())
+  slug     String   @unique
+  title    String
+  featured Boolean  @default(false)
+  tags     String[]
+  order    Int?
+
+  builtWith     String[]
+  stack         String[]
+  featuredPhoto String?
+  githubUrl     String?
+  liveUrl       String?
+
+  status     String?
+  launchedAt DateTime?
+  period     String?
+  role       String?
+
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  projectTranslations ProjectTranslation[]
+}
+
+model ProjectTranslation {
+  id          Int     @id @default(autoincrement())
+  locale      Locale  @default(sk)
+  title       String
+  description String?
+  content     Json?
+  highlights  Json?
+
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, projectId])
+}
