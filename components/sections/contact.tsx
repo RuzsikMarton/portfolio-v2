@@ -40,7 +40,7 @@ const ContactSection = () => {
       <div ref={contactRef} className="relative flex flex-col items-center z-10 reveal-section">
         <h1 className="text-5xl font-semibold">{t('title')}</h1>
         <p className="text-ink md:mt-10 my-5 text-center max-w-2xl">{t('description')}</p>
-        <Link href="mailto:marton.ruzsik@icloud.com">
+        <Link href="mailto:marton.ruzsik@icloud.com" aria-label="Email">
           <span className="relative inline-flex h-12 w-full md:w-60 md:mt-10 overflow-hidden rounded-lg p-[1px] focus:outline-none">
             <span className="absolute pointer-events-none inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#242a38_0%,#75c5fb_50%,#242a38_100%)))]" />
             <span className="inline-flex h-full w-full items-center justify-center rounded-lg bg-surface-2 px-7 gap-2 backdrop-blur-3xl font-medium text-white cursor-pointer group">
@@ -59,6 +59,7 @@ const ContactSection = () => {
             rel="noopener noreferrer"
             href="https://github.com/RuzsikMarton"
             className="link-buttons"
+            aria-label="GitHub"
           >
             <IconBrandGithub />
           </a>
@@ -67,6 +68,7 @@ const ContactSection = () => {
             rel="noopener noreferrer"
             href="https://www.linkedin.com/in/m%C3%A1rton-ruzsik-47561b313/"
             className="link-buttons"
+            aria-label="LinkedIn"
           >
             <IconBrandLinkedin />
           </a>
@@ -75,6 +77,7 @@ const ContactSection = () => {
             rel="noopener noreferrer"
             href="https://www.facebook.com/marton.ruzsik/"
             className="link-buttons"
+            aria-label="Facebook"
           >
             <IconBrandFacebook />
           </a>

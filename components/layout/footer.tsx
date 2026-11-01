@@ -13,6 +13,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             href="https://github.com/RuzsikMarton"
             className="link-buttons"
+            aria-label="GitHub"
           >
             <IconBrandGithub />
           </a>
@@ -21,6 +22,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             href="https://www.linkedin.com/in/m%C3%A1rton-ruzsik-47561b313/"
             className="link-buttons"
+            aria-label="LinkedIn"
           >
             <IconBrandLinkedin />
           </a>
@@ -29,6 +31,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             href="https://www.facebook.com/marton.ruzsik/"
             className="link-buttons"
+            aria-label="Facebook"
           >
             <IconBrandFacebook />
           </a>

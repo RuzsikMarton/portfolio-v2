@@ -49,24 +49,24 @@ model About {
 }
 
 model Project {
-  id       Int      @id @default(autoincrement())
-  slug     String   @unique
+  id       Int     @id @default(autoincrement())
+  slug     String  @unique
   title    String
-  featured Boolean  @default(false)
-  tags     String[]
-  order    Int?
+  featured Boolean @default(false)
 
-  builtWith     String[]
   stack         String[]
   featuredPhoto String?
   logo          String?
   githubUrl     String?
   liveUrl       String?
+  pdf           String?
 
   status     String?
   launchedAt DateTime?
   period     String?
   role       String?
+
+  order Int?
 
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
@@ -74,12 +74,20 @@ model Project {
 }
 
 model ProjectTranslation {
-  id          Int     @id @default(autoincrement())
-  locale      Locale  @default(sk)
+  id          Int      @id @default(autoincrement())
+  locale      Locale   @default(sk)
   title       String
-  description String?
-  content     Json?
-  highlights  Json?
+  description String
+  tags        String[]
+  overview    String?
+  highlights  String[]
+
+  stat1      String?
+  stat1Value String?
+  stat2      String?
+  stat2Value String?
+  stat3      String?
+  stat3Value String?
 
   projectId Int
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)

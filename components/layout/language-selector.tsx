@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { IconCheck, IconChevronDown, IconWorld } from '@tabler/icons-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
+import Flag from '../ui/flag';
 
 const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
   const router = useRouter();
@@ -14,10 +15,10 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
-  const languages = [
-    { code: 'sk', lang: t('sk'), flag: 'sk' },
-    { code: 'en', lang: t('en'), flag: 'us' },
-    { code: 'hu', lang: t('hu'), flag: 'hu' },
+  const languages: { code: 'sk' | 'en' | 'hu'; lang: string }[] = [
+    { code: 'sk', lang: t('sk') },
+    { code: 'en', lang: t('en') },
+    { code: 'hu', lang: t('hu') },
   ];
 
   useEffect(() => {
@@ -83,7 +84,7 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
                 }
               }}
             >
-              <span className={`fi fi-${language.flag}`} aria-hidden="true" />
+              <Flag locale={language.code} size={16} />
 
               {language.lang}
 

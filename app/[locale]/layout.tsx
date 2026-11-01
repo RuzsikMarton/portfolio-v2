@@ -5,7 +5,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { locales } from '@/i18n/config';
 import NextTopLoader from 'nextjs-toploader';
-import '/node_modules/flag-icons/css/flag-icons.min.css';
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
 

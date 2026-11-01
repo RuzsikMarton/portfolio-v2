@@ -83,7 +83,7 @@ const ProjectsSection = () => {
                 )}
               >
                 <div>
-                  <p className="mb-3 text-sm text-accent">Featured Project</p>
+                  <p className="mb-3 text-sm text-accent">{t('featured')}</p>
                   <h3 className="mb-5 text-2xl font-bold text-ink md:text-3xl">
                     <Link
                       href={`/projects/${project.title}`}
