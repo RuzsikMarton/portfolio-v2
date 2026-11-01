@@ -44,6 +44,7 @@ export default async function RootLayout({ children }: LayoutProps<'/[locale]'>)
   return (
     <html
       lang={locale}
+      data-scroll-behavior="smooth"
       className="h-full antialiased scroll-smooth"
       style={{ fontFamily: jetBrainsMono.style.fontFamily }}
     >

@@ -4,7 +4,7 @@ import MobileNav from './mobile-nav';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSelector from './language-selector';
-import { useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 
 export default function PublicNav() {
@@ -74,7 +74,9 @@ export default function PublicNav() {
               </Link>
             ))}
           </div>
-          <LanguageSelector aria-label="Language" />
+          <Suspense fallback={<div className="h-10 w-10" />}>
+            <LanguageSelector aria-label="Language" />
+          </Suspense>
         </div>
         <MobileNav navItems={navItems} />
       </div>
