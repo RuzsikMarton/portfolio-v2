@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
+    "@dnd-kit/helpers": "^0.5.3",
+    "@dnd-kit/react": "^0.5.3",
     "@node-rs/argon2": "^2.2.2",
     "@prisma/adapter-pg": "^7.10.1",
     "@prisma/client": "^7.10.1",

@@ -2,9 +2,15 @@ import { cacheLife, cacheTag } from 'next/cache';
 import 'server-only';
 import { db } from './prisma';
 
+export async function getLastProject() {
+  return db.project.findFirst({
+    orderBy: { order: 'desc' },
+    select: { slug: true, order: true },
+  });
+}
+
 export async function getProjects() {
   'use cache';
-
   cacheLife('hours');
 
   return db.project.findMany({
@@ -34,5 +40,5 @@ export async function getProjectSlugs() {
 }
 
 {
-  /* will project slugs and updatedAt from db later */
+  /* will get project slugs and updatedAt from db later */
 }

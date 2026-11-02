@@ -1,14 +1,13 @@
 'use client';
 
 import MobileNav from './mobile-nav';
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import LanguageSelector from './language-selector';
 import { Suspense, useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
+import { Link } from '@/i18n/navigation';
 
 export default function PublicNav() {
-  const locale = useLocale();
   const t = useTranslations('nav');
   const titleRef = useRef<HTMLAnchorElement>(null);
   const itemsRef = useRef<HTMLDivElement>(null);
@@ -56,7 +55,7 @@ export default function PublicNav() {
   return (
     <nav aria-label="Main navigation" className="py-8 xl:py-12 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        <Link ref={titleRef} aria-label="Home" href={`/${locale}`}>
+        <Link ref={titleRef} aria-label="Home" href={`/`}>
           <h1 className="text-4xl font-semibold">MártonRuzsik.</h1>
         </Link>
 

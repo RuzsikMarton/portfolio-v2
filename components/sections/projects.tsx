@@ -5,10 +5,10 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useEffect, useRef } from 'react';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import { IconArrowRight, IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
 import { Locale } from '@/i18n/config';
 import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 
 const ProjectsSection = () => {
   const titleRef = useRef<HTMLDivElement>(null);
@@ -86,7 +86,7 @@ const ProjectsSection = () => {
                   <p className="mb-3 text-sm text-accent">{t('featured')}</p>
                   <h3 className="mb-5 text-2xl font-bold text-ink md:text-3xl">
                     <Link
-                      href={`/projects/${project.title}`}
+                      href={`/projects/${project.slug}`}
                       className="transition-colors hover:text-accent"
                     >
                       {project.title}
