@@ -17,7 +17,9 @@ export default function AdminAppLayout({ children }: { children: React.ReactNode
         <Link href="/admin" className="mb-8 px-4 font-display text-xl font-bold">
           Portfolio
         </Link>
-        <AdminNav />
+        <Suspense fallback={<AdminNavSkeleton />}>
+          <AdminNav />
+        </Suspense>
         <div className="mt-auto space-y-1">
           <SiteLink />
           <LogoutButton />
@@ -29,7 +31,9 @@ export default function AdminAppLayout({ children }: { children: React.ReactNode
         aria-label="Admin nav"
         className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/90 px-2 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden"
       >
-        <AdminNav />
+        <Suspense fallback={<MobileAdminNavSkeleton />}>
+          <AdminNav />
+        </Suspense>
       </nav>
 
       <main id="main" className="pb-32 md:pb-12">
@@ -72,6 +76,32 @@ function PageSkeleton() {
       <div className="h-10 w-48 rounded-xl bg-surface-2" />
       <div className="mt-8 h-40 rounded-card bg-surface-2" />
       <div className="mt-4 h-40 rounded-card bg-surface-2" />
+    </div>
+  );
+}
+
+function AdminNavSkeleton() {
+  return (
+    <div className="grid grid-cols-1 gap-1 animate-pulse">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div key={i} className="flex min-h-12 items-center gap-3 rounded-2xl px-4">
+          <div className="size-6 rounded-md bg-surface-2" />
+          <div className="h-4 w-24 rounded-md bg-surface-2" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MobileAdminNavSkeleton() {
+  return (
+    <div className="grid grid-cols-4 animate-pulse">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div key={i} className="flex min-h-16 flex-col items-center justify-center gap-2">
+          <div className="size-6 rounded-md bg-surface-2" />
+          <div className="h-3 w-12 rounded-md bg-surface-2" />
+        </div>
+      ))}
     </div>
   );
 }
