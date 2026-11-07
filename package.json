@@ -29,6 +29,7 @@
     "@prisma/client": "^7.10.1",
     "@tabler/icons-react": "^3.49.0",
     "@thesvg/react": "^4.0.0",
+    "@vercel/blob": "^2.8.2",
     "animejs": "^4.5.0",
     "clsx": "^2.1.1",
     "dotenv": "^18.0.8",

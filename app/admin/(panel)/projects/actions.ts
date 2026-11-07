@@ -7,6 +7,8 @@ import { Locale } from '@/prisma/generated/prisma/enums';
 import { updateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 import z from 'zod';
+import { del, put } from '@vercel/blob';
+import { processImage } from '@/lib/image';
 
 function invalidate(slug?: string) {
   updateTag('projects');
@@ -100,7 +102,7 @@ const detailsSchema = z.object({
   githubUrl: z.string().trim().max(100),
   liveUrl: z.string().trim().max(100),
   stack: z.array(z.string().trim().max(50)),
-  projectTranslation: translationSchema.max(3),
+  projectTranslation: translationSchema.length(3),
 });
 
 const emptyToNull = (value: string) => value.trim() || null;
@@ -113,6 +115,7 @@ export const updateProject = async (
   await requireAdmin();
   console.log('Updating project', formData);
   const translations = JSON.parse(formData.get('projectTranslation') as string);
+  const launchedAtValue = formData.get('launchedAt');
   const parsed = detailsSchema.safeParse({
     title: formData.get('title'),
     slug: formData.get('slug'),
@@ -120,22 +123,18 @@ export const updateProject = async (
     role: formData.get('role') ?? '',
     status: formData.get('status') ?? '',
     period: formData.get('period') ?? '',
-    launchedAt: Number(formData.get('launchedAt')) ?? '',
+    launchedAt: launchedAtValue === null || launchedAtValue === '' ? null : Number(launchedAtValue),
     githubUrl: formData.get('githubUrl') ?? '',
     liveUrl: formData.get('liveUrl') ?? '',
     stack: JSON.parse(formData.get('stack') as string),
     projectTranslation: translations,
   });
   if (!parsed.success) {
-    console.log('Validation errors:', parsed.error.flatten());
-
+    console.log(z.prettifyError(parsed.error));
     return {
-      error: parsed.error.issues
-        .map((issue) => `${issue.path.join('.')}: ${issue.message}`)
-        .join(', '),
+      error: z.prettifyError(parsed.error),
     };
   }
-  if (!parsed.success) return { error: 'Invalid data' };
 
   // normalize optional fields and arrays
   const data = {
@@ -217,5 +216,91 @@ export const updateProject = async (
 
 export const deleteProject = async (id: number) => {
   await requireAdmin();
-  console.log('delete', id);
+  const project = await db.project.findUnique({ where: { id } });
+  if (!project) redirect('/admin/projects');
+  await db.project.delete({ where: { id } });
+  invalidate(project.slug);
+  redirect('/admin/projects');
+};
+
+export const uploadFeaturedPhoto = async (
+  id: number,
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> => {
+  await requireAdmin();
+  const file = formData.get('featured');
+  if (!(file instanceof File)) {
+    return { error: 'Please select an image.' };
+  }
+
+  const project = await db.project.findUnique({
+    where: { id },
+    select: { id: true, slug: true, featuredPhoto: true },
+  });
+
+  const processed = await processImage(file, 1920);
+  let newPhotoUrl: string | null = null;
+  if (!project) return { error: 'Project not found' };
+
+  // delete old photo if exists and upload new one
+  if (file instanceof File && project.featuredPhoto) {
+    await del(project.featuredPhoto);
+    const blob = await put(`featured/${id}/${crypto.randomUUID()}.webp`, processed.buffer, {
+      access: 'public',
+    });
+    newPhotoUrl = blob.url;
+  } else if (file instanceof File) {
+    const blob = await put(`featured/${id}.webp`, processed.buffer, { access: 'public' });
+    newPhotoUrl = blob.url;
+  } else {
+    return { error: 'Invalid file' };
+  }
+
+  // update db with new photo if uploaded
+  if (newPhotoUrl) await db.project.update({ where: { id }, data: { featuredPhoto: newPhotoUrl } });
+
+  invalidate(project.slug);
+  return { ok: true };
+};
+
+export const uploadLogoPhoto = async (
+  id: number,
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> => {
+  await requireAdmin();
+  const file = formData.get('featured');
+  if (!(file instanceof File)) {
+    return { error: 'Please select an image.' };
+  }
+
+  const project = await db.project.findUnique({
+    where: { id },
+    select: { id: true, slug: true, logo: true },
+  });
+
+  const processed = await processImage(file, 1920);
+  let newLogoUrl: string | null = null;
+  if (!project) return { error: 'Project not found' };
+
+  // delete old photo if exists and upload new one
+  if (file instanceof File && project.logo) {
+    await del(project.logo);
+    const blob = await put(`logo/${id}/${crypto.randomUUID()}.webp`, processed.buffer, {
+      access: 'public',
+    });
+    newLogoUrl = blob.url;
+  } else if (file instanceof File) {
+    const blob = await put(`logo/${id}.webp`, processed.buffer, { access: 'public' });
+    newLogoUrl = blob.url;
+  } else {
+    return { error: 'Invalid file' };
+  }
+
+  // update db with new photo if uploaded
+  if (newLogoUrl) await db.project.update({ where: { id }, data: { logo: newLogoUrl } });
+
+  invalidate(project.slug);
+  return { ok: true };
 };
