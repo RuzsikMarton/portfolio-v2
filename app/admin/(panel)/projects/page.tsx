@@ -1,4 +1,5 @@
 import PageHeader from '@/components/admin/page-header';
+import SortableProjects from '@/components/admin/sortable-projects';
 import { db } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/session';
 import { IconPlus } from '@tabler/icons-react';
@@ -11,6 +12,7 @@ const AdminProjectsPage = async () => {
       id: true,
       slug: true,
       title: true,
+      order: true,
       _count: {
         select: {
           projectTranslations: true,
@@ -35,13 +37,7 @@ const AdminProjectsPage = async () => {
         {projects.length === 0 ? (
           <div className="text-center text-ink-2 text-xl">No projects</div>
         ) : (
-          <ul>
-            {projects.map((project) => (
-              <li key={project.id}>
-                {project.slug} ({project._count.projectTranslations})
-              </li>
-            ))}
-          </ul>
+          <SortableProjects projects={projects} />
         )}
       </div>
     </>

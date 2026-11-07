@@ -16,7 +16,7 @@ const PageHeader = ({ title, backHref, action }: PageHeaderProps) => {
         <Link
           href={backHref}
           aria-label="Back"
-          className="grid size-12 shrink-0 place-items-center text-ink hover:bg-surface-2"
+          className="grid size-12 shrink-0 place-items-center text-ink rounded-2xl hover:bg-surface-2"
         >
           <IconArrowLeft />
         </Link>

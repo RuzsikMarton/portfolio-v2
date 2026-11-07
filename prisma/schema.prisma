@@ -53,6 +53,7 @@ model Project {
   slug     String  @unique
   title    String
   featured Boolean @default(false)
+  order    Int
 
   stack         String[]
   featuredPhoto String?
@@ -62,11 +63,9 @@ model Project {
   pdf           String?
 
   status     String?
-  launchedAt DateTime?
+  launchedAt Int?
   period     String?
   role       String?
-
-  order Int?
 
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt

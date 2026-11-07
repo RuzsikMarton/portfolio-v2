@@ -35,3 +35,44 @@ export async function createProject(_prev: FormState, formData: FormData): Promi
   });
   redirect(`/admin/projects/${project.id}`);
 }
+
+export const reorderProjects = async (ids: number[]) => {
+  await requireAdmin();
+
+  if (!Array.isArray(ids) || !ids.every(Number.isInteger)) return { error: 'Invalid project IDs' };
+
+  const projects = await db.project.findMany({ select: { id: true } });
+
+  if (
+    projects.length !== ids.length ||
+    new Set(ids).size !== ids.length ||
+    !projects.every((p) => ids.includes(p.id))
+  )
+    return { error: 'Mismatch' };
+
+  await db.$transaction(
+    ids.map((id, index) =>
+      db.project.update({
+        where: { id },
+        data: { order: index + 1 },
+      })
+    )
+  );
+  updateTag('projects');
+
+  return { ok: true };
+};
+
+export const updateProject = async (_prev: FormState, formData: FormData): Promise<FormState> => {
+  await requireAdmin();
+
+  const stack = JSON.parse(formData.get('stack') as string);
+  const translations = JSON.parse(formData.get('projectTranslation') as string);
+  console.log(translations, stack);
+  return { ok: true };
+};
+
+export const deleteProject = async (id: number) => {
+  await requireAdmin();
+  console.log('delete', id);
+};
