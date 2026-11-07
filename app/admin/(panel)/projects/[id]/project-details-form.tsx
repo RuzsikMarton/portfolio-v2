@@ -7,8 +7,7 @@ import TranslationsTabs from '@/components/admin/translations-tabs';
 import { IconCheck } from '@tabler/icons-react';
 import { Toggle } from '@/components/admin/toggle';
 import HighlightEditor from '@/components/admin/highlight-editor';
-
-type Locale = 'en' | 'hu' | 'sk';
+import { Locale } from '@/prisma/generated/prisma/enums';
 
 interface Translation {
   id?: number;
@@ -26,22 +25,6 @@ interface Translation {
   stat2Value: string | null;
   stat3Value: string | null;
 }
-const locales: Locale[] = ['en', 'hu', 'sk'];
-
-const emptyTranslation = (locale: Locale): Translation => ({
-  locale,
-  title: '',
-  description: '',
-  tags: [],
-  overview: null,
-  highlights: [],
-  stat1: null,
-  stat2: null,
-  stat3: null,
-  stat1Value: null,
-  stat2Value: null,
-  stat3Value: null,
-});
 
 interface Props {
   id: number;
@@ -60,15 +43,13 @@ interface Props {
 }
 
 const ProjectDetailsForm = ({ project }: { project: Props }) => {
-  const [state, action, pending] = useActionState<FormState, FormData>(updateProject, {});
+  const [state, action, pending] = useActionState<FormState, FormData>(
+    updateProject.bind(null, project.id),
+    {}
+  );
   const [stack, setStack] = useState<string[]>(project.stack);
   const [activeLocale, setActiveLocale] = useState<Locale>('en');
-  const [translations, setTranslations] = useState<Translation[]>(() =>
-    locales.map(
-      (locale) =>
-        project.projectTranslation.find((t) => t.locale === locale) ?? emptyTranslation(locale)
-    )
-  );
+  const [translations, setTranslations] = useState<Translation[]>(project.projectTranslation);
 
   const updateTranslation = (
     locale: Locale,

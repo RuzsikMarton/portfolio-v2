@@ -31,7 +31,16 @@ const AdminProjectPage = async ({ params }: PageProps<'/admin/projects/[id]'>) =
           launchedAt: project.launchedAt ? String(project.launchedAt) : '',
           period: project.period ? project.period : '',
           role: project.role ? project.role : '',
-          projectTranslation: project.projectTranslations,
+          projectTranslation: project.projectTranslations.map((translation) => ({
+            ...translation,
+            overview: translation.overview ?? '',
+            stat1: translation.stat1 ?? '',
+            stat2: translation.stat2 ?? '',
+            stat3: translation.stat3 ?? '',
+            stat1Value: translation.stat1Value ?? '',
+            stat2Value: translation.stat2Value ?? '',
+            stat3Value: translation.stat3Value ?? '',
+          })),
         }}
       />
     </>
