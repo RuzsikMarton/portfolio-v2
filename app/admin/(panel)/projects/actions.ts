@@ -113,7 +113,6 @@ export const updateProject = async (
   formData: FormData
 ): Promise<FormState> => {
   await requireAdmin();
-  console.log('Updating project', formData);
   const translations = JSON.parse(formData.get('projectTranslation') as string);
   const launchedAtValue = formData.get('launchedAt');
   const parsed = detailsSchema.safeParse({
@@ -251,13 +250,15 @@ export const uploadFeaturedPhoto = async (
     });
     newPhotoUrl = blob.url;
   } else if (file instanceof File) {
-    const blob = await put(`featured/${id}.webp`, processed.buffer, { access: 'public' });
+    const blob = await put(`featured/${id}/${crypto.randomUUID()}.webp`, processed.buffer, {
+      access: 'public',
+    });
     newPhotoUrl = blob.url;
   } else {
     return { error: 'Invalid file' };
   }
 
-  // update db with new photo if uploaded
+  // update db with new photo url if uploaded
   if (newPhotoUrl) await db.project.update({ where: { id }, data: { featuredPhoto: newPhotoUrl } });
 
   invalidate(project.slug);
@@ -270,7 +271,7 @@ export const uploadLogoPhoto = async (
   formData: FormData
 ): Promise<FormState> => {
   await requireAdmin();
-  const file = formData.get('featured');
+  const file = formData.get('logo');
   if (!(file instanceof File)) {
     return { error: 'Please select an image.' };
   }
@@ -287,18 +288,20 @@ export const uploadLogoPhoto = async (
   // delete old photo if exists and upload new one
   if (file instanceof File && project.logo) {
     await del(project.logo);
-    const blob = await put(`logo/${id}/${crypto.randomUUID()}.webp`, processed.buffer, {
+    const blob = await put(`logo/${project.slug}-logo.webp`, processed.buffer, {
       access: 'public',
     });
     newLogoUrl = blob.url;
   } else if (file instanceof File) {
-    const blob = await put(`logo/${id}.webp`, processed.buffer, { access: 'public' });
+    const blob = await put(`logo/${project.slug}-logo.webp`, processed.buffer, {
+      access: 'public',
+    });
     newLogoUrl = blob.url;
   } else {
     return { error: 'Invalid file' };
   }
 
-  // update db with new photo if uploaded
+  // update db with new logo url if uploaded
   if (newLogoUrl) await db.project.update({ where: { id }, data: { logo: newLogoUrl } });
 
   invalidate(project.slug);

@@ -35,14 +35,14 @@ export default function PublicNav() {
     const titleAnim = animate(title, {
       opacity: [0, 1],
       duration: 2000,
-      easing: 'inOutQuart',
+      ease: 'inOutQuart',
     });
 
     const reveal = animate(items, {
       opacity: [0, 1],
       translateY: [-50, 0],
       delay: stagger(200),
-      easing: 'inOutQuart',
+      ease: 'inOutQuart',
       duration: 800,
     });
 
