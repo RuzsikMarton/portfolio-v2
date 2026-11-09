@@ -80,6 +80,33 @@
     "button": "Napíšte mi"
   },
   "projectpage": {
-    "back": "Projekty"
+    "back": "Projekty",
+    "overview": "Prehľad",
+    "highlights": "Hlavné body",
+    "role": "Rola",
+    "role-value": {
+      "author": "Autor",
+      "lead": "Vedúci ",
+      "developer": "Fullstack vývojár",
+      "frontend": "Frontend vývojár",
+      "backend": "Backend vývojár",
+      "ai": "AI vývojár",
+      "designer": "Dizajnér",
+      "solo": "Solo projekt"
+    },
+    "period": "Obdobie",
+    "launched": "Spustené",
+    "status": "Stav",
+    "status-value": {
+      "completed": "Dokončené",
+      "production": "V prevádzke",
+      "live": "Online",
+      "archived": "Archivované",
+      "development": "Vo vývoji"
+    },
+    "links": "Odkazy",
+    "visit": "Navštíviť",
+    "source": "Zdrojový kód",
+    "pdf": "Čítať prácu (PDF)"
   }
 }

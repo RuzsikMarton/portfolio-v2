@@ -80,6 +80,33 @@
     "button": "Beszéljünk"
   },
   "projectpage": {
-    "back": "Projektek"
+    "back": "Projektek",
+    "overview": "Áttekintés",
+    "highlights": "Főbb pontok",
+    "role": "Szerep",
+    "role-value": {
+      "author": "Szerző",
+      "lead": "Team vezető",
+      "developer": "Fullstack Fejlesztő",
+      "frontend": "Frontend Fejlesztő",
+      "backend": "Backend Fejlesztő",
+      "ai": "AI Fejlesztő",
+      "designer": "Designer",
+      "solo": "Solo projekt"
+    },
+    "period": "Időszak",
+    "launched": "Indítva",
+    "status": "Állapot",
+    "status-value": {
+      "completed": "Befejezve",
+      "production": "Üzemben",
+      "live": "Élesben",
+      "archived": "Archiválva",
+      "development": "Fejlesztés alatt"
+    },
+    "links": "Linkek",
+    "visit": "Megtekintés",
+    "source": "Forráskód",
+    "pdf": "Szakdolgozat (PDF)"
   }
 }

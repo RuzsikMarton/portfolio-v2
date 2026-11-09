@@ -28,7 +28,7 @@ const AdminProjectPage = async ({ params }: PageProps<'/admin/projects/[id]'>) =
           liveUrl: project.liveUrl ? project.liveUrl : '',
           pdf: project.pdf ? project.pdf : '',
           status: project.status ? project.status : '',
-          launchedAt: project.launchedAt ? String(project.launchedAt) : '',
+          launchedAt: project.launchedAt ? project.launchedAt : '',
           period: project.period ? project.period : '',
           role: project.role ? project.role : '',
           projectTranslation: project.projectTranslations.map((translation) => ({

@@ -3,7 +3,7 @@ import { PROJECT_SLUGS } from '@/lib/catalog';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import Footer from '@/components/layout/footer';
-import PorjectView from '@/components/projects/project-view';
+import ProjectView from '@/components/projects/project-view';
 import ProjectsLoading from '@/components/projects/projects-loading';
 
 type Props = {
@@ -30,7 +30,7 @@ async function ProjectContent({ params }: Props) {
   if (!project) return notFound();
   return (
     <div className="flex flex-col mx-auto w-full min-h-[calc(100vh-20rem)] max-w-7xl">
-      <PorjectView project={project} translation={project.projectTranslations[0]} />
+      <ProjectView project={project} translation={project.projectTranslations[0]} />
       <Footer />
     </div>
   );

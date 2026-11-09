@@ -8,6 +8,7 @@ import { IconCheck } from '@tabler/icons-react';
 import { Toggle } from '@/components/admin/toggle';
 import HighlightEditor from '@/components/admin/highlight-editor';
 import { Locale } from '@/prisma/generated/prisma/enums';
+import { roles, statuses } from '@/lib/const';
 
 interface Translation {
   id?: number;
@@ -116,25 +117,42 @@ const ProjectDetailsForm = ({ project }: { project: Props }) => {
           <label htmlFor="role" className="field-label">
             Role
           </label>
-          <input
-            id="role"
-            name="role"
-            type="text"
-            defaultValue={project.role}
-            className="field-input"
-          />
+          <div className="group field-input flex items-center justify-center">
+            <select
+              id="role"
+              name="role"
+              defaultValue={project?.role ?? ''}
+              className="h-full w-full"
+            >
+              <option value="">Select role</option>
+              {roles.map((role) => (
+                <option key={role.value} value={role.value}>
+                  {role.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div>
           <label htmlFor="status" className="field-label">
             Status
           </label>
-          <input
-            id="status"
-            name="status"
-            type="text"
-            defaultValue={project.status}
-            className="field-input"
-          />
+          <div className="group field-input flex items-center justify-center">
+            {' '}
+            <select
+              id="status"
+              name="status"
+              defaultValue={project?.status ?? ''}
+              className="w-full h-full"
+            >
+              <option value="">Select status</option>
+              {statuses.map((status) => (
+                <option key={status.value} value={status.value}>
+                  {status.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
@@ -223,7 +241,7 @@ const ProjectDetailsForm = ({ project }: { project: Props }) => {
             value={activeTranslation.subtitle}
             onChange={(e) => updateTranslation(activeLocale, 'subtitle', e.target.value)}
             className="field-input"
-            maxLength={100}
+            maxLength={150}
           />
         </div>
         <div>
@@ -261,6 +279,7 @@ const ProjectDetailsForm = ({ project }: { project: Props }) => {
       <div>
         <label className="field-label">Highlights</label>
         <HighlightEditor
+          key={activeLocale}
           highlights={activeTranslation.highlights}
           onChange={(h) => updateTranslation(activeLocale, 'highlights', h)}
         />

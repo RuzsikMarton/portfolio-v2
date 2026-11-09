@@ -80,6 +80,33 @@
     "button": "Let's talk"
   },
   "projectpage": {
-    "back": "Projects"
+    "back": "Projects",
+    "overview": "Overview",
+    "highlights": "Highlights",
+    "role": "Role",
+    "role-value": {
+      "author": "Author",
+      "lead": "Team Lead",
+      "developer": "Fullstack Developer",
+      "frontend": "Frontend Developer",
+      "backend": "Backend Developer",
+      "ai": "AI Engineer",
+      "designer": "Designer",
+      "solo": "Solo project"
+    },
+    "period": "Period",
+    "launched": "Launched",
+    "status": "Status",
+    "status-value": {
+      "completed": "Completed",
+      "production": "In production",
+      "live": "Live",
+      "archived": "Archived",
+      "development": "In development"
+    },
+    "links": "Links",
+    "visit": "Visit site",
+    "source": "Source code",
+    "pdf": "Read thesis (PDF)"
   }
 }

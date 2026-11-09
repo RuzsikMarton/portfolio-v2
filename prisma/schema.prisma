@@ -63,7 +63,7 @@ model Project {
   pdf           String?
 
   status     String?
-  launchedAt Int?
+  launchedAt String?
   period     String?
   role       String?
 

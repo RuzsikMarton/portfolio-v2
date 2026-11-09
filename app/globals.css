@@ -5,6 +5,7 @@
   /* lighter bg #1c1c21*/
   --color-surface: #1a1c1d;
   --color-surface-2: #242728;
+  --color-card: #1d1d29;
   --color-border: #49494d;
   --color-line: #323638;
   --color-ink: #e8ebed;
@@ -139,7 +140,11 @@
     height: var(--blob-size);
     top: calc(50% - var(--blob-size) / 2);
     left: calc(50% - var(--blob-size) / 2);
-    background: radial-gradient(circle at center, rgb(var(--blob-color) / 0.8) 0, rgb(var(--blob-color) / 0) 50%)
+    background: radial-gradient(
+        circle at center,
+        rgb(var(--blob-color) / 0.8) 0,
+        rgb(var(--blob-color) / 0) 50%
+      )
       no-repeat;
     mix-blend-mode: hard-light;
     transform-origin: var(--blob-origin);

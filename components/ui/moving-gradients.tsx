@@ -14,11 +14,11 @@ const blobs = [
     opacity: 0.5,
   },
   {
-    color: '38 64 80',
+    color: '86 64 154',
     anim: 'blob-horizontal',
     duration: '40s',
     origin: 'calc(50% - 200px)',
-    opacity: 0.3,
+    opacity: 0.4,
   },
   {
     color: '117 197 251',

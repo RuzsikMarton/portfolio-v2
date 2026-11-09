@@ -37,9 +37,9 @@ export async function createProject(_prev: FormState, formData: FormData): Promi
       order: (lastProject?.order ?? 0) + 1,
       projectTranslations: {
         create: [
-          { locale: 'en', title: '', subtitle: '', description: '', tags: [], highlights: [] },
-          { locale: 'hu', title: '', subtitle: '', description: '', tags: [], highlights: [] },
-          { locale: 'sk', title: '', subtitle: '', description: '', tags: [], highlights: [] },
+          { locale: 'en', title: title, subtitle: '', description: '', tags: [], highlights: [] },
+          { locale: 'hu', title: title, subtitle: '', description: '', tags: [], highlights: [] },
+          { locale: 'sk', title: title, subtitle: '', description: '', tags: [], highlights: [] },
         ],
       },
     },
@@ -78,7 +78,7 @@ const translationSchema = z.array(
   z.object({
     locale: z.enum(Locale),
     title: z.string().trim().max(50),
-    subtitle: z.string().trim().max(100),
+    subtitle: z.string().trim().max(150),
     description: z.string().trim().max(500),
     tags: z.array(z.string().trim().max(50)),
     overview: z.string().trim().max(5000).nullable(),
@@ -99,7 +99,7 @@ const detailsSchema = z.object({
   role: z.string().trim().max(50),
   status: z.string().trim().max(30),
   period: z.string().trim().max(30),
-  launchedAt: z.int(),
+  launchedAt: z.string().trim().max(4),
   githubUrl: z.string().trim().max(100),
   liveUrl: z.string().trim().max(100),
   stack: z.array(z.string().trim().max(50)),
@@ -115,7 +115,6 @@ export const updateProject = async (
 ): Promise<FormState> => {
   await requireAdmin();
   const translations = JSON.parse(formData.get('projectTranslation') as string);
-  const launchedAtValue = formData.get('launchedAt');
   const parsed = detailsSchema.safeParse({
     title: formData.get('title'),
     slug: formData.get('slug'),
@@ -123,7 +122,7 @@ export const updateProject = async (
     role: formData.get('role') ?? '',
     status: formData.get('status') ?? '',
     period: formData.get('period') ?? '',
-    launchedAt: launchedAtValue === null || launchedAtValue === '' ? null : Number(launchedAtValue),
+    launchedAt: formData.get('launchedAt') ?? '',
     githubUrl: formData.get('githubUrl') ?? '',
     liveUrl: formData.get('liveUrl') ?? '',
     stack: JSON.parse(formData.get('stack') as string),
@@ -142,7 +141,7 @@ export const updateProject = async (
     role: emptyToNull(parsed.data.role),
     status: emptyToNull(parsed.data.status),
     period: emptyToNull(parsed.data.period),
-    launchedAt: parsed.data.launchedAt === 0 ? null : parsed.data.launchedAt,
+    launchedAt: emptyToNull(parsed.data.launchedAt),
     githubUrl: emptyToNull(parsed.data.githubUrl),
     liveUrl: emptyToNull(parsed.data.liveUrl),
 
