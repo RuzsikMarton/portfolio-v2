@@ -32,6 +32,19 @@ export default function PublicNav() {
     const title = titleRef.current;
     if (!items || !title) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      title.style.opacity = '1';
+      title.style.transform = 'none';
+      Array.from(items).forEach((item) => {
+        const element = item as HTMLElement;
+        element.style.opacity = '1';
+        element.style.transform = 'none';
+      });
+      return;
+    }
+
     const titleAnim = animate(title, {
       opacity: [0, 1],
       duration: 2000,

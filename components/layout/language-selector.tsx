@@ -56,7 +56,7 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
       <div
         aria-hidden={!open}
         className={cn(
-          'absolute left-1/2 top-full z-10 mt-2 min-w-[8rem]',
+          'absolute left-1/2 top-full z-10 mt-2 min-w-36',
           '-translate-x-1/2 rounded-md border border-accent bg-bg',
           'transition-[opacity,translate,visibility] duration-200 ease-out',
           open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
@@ -87,8 +87,9 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
               <Flag locale={language.code} size={16} />
 
               {language.lang}
-
-              {locale === language.code && <IconCheck size={16} className="ml-auto" />}
+              {locale === language.code && (
+                <IconCheck size={16} className="ml-auto mr-2 shrink-0 text-ink" />
+              )}
             </button>
           ))}
         </div>

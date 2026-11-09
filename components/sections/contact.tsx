@@ -13,11 +13,18 @@ import { animate } from 'animejs';
 
 const ContactSection = () => {
   const t = useTranslations('contact');
-  const contactRef = useRef(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const contact = contactRef.current;
     if (!contact) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;

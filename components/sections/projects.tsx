@@ -23,9 +23,19 @@ const ProjectsSection = () => {
       ...(buttonRef.current ? [buttonRef.current] : []),
       ...projectRefs.current.filter((element): element is HTMLLIElement => element !== null),
     ];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      elements.forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
 
     elements.forEach((element) => {
       element.style.opacity = '0';
+      element.style.transform = 'none';
     });
 
     const observer = new IntersectionObserver(
@@ -148,7 +158,7 @@ const ProjectsSection = () => {
               {/* project image */}
               <div
                 className={cn(
-                  'group relative z-0 col-span-full row-start-1 min-h-80 overflow-hidden rounded-xl md:row-end-2 md:min-h-[380px]',
+                  'group relative z-0 col-span-full row-start-1 min-h-80 overflow-hidden rounded-xl md:row-end-2 md:min-h-95',
                   isOdd ? 'md:col-start-1 md:col-end-8' : 'md:col-start-6 md:col-end-13'
                 )}
               >

@@ -192,6 +192,14 @@
     transform: translateY(50px);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-section,
+    nav a {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   .logo path {
     fill: #00bfff;
   }

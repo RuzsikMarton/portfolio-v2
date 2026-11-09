@@ -13,6 +13,13 @@ const WipContent = ({ title, text }: { title: string; text: string }) => {
     const items = itemsRef.current?.children;
     if (!icon || !items) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      itemsRef.current!.style.opacity = '1';
+      itemsRef.current!.style.transform = 'none';
+      return;
+    }
+
     const reveal = animate(items, {
       translateY: [30, 0],
       opacity: [0, 1],

@@ -15,6 +15,13 @@ export default function CountUp({ value, duration = 1500 }: CountUpProps) {
     const element = numberRef.current;
     if (!element) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      element.textContent = value.toLocaleString();
+      return;
+    }
+
     const counter = { value: 0 };
     let animation: ReturnType<typeof animate> | undefined;
 

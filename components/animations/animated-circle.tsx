@@ -16,6 +16,12 @@ export default function AnimatedCircle({ borderRef }: { borderRef?: Ref<SVGSVGEl
       { ref: circle3Ref, duration: 30000, direction: '1turn' },
     ];
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      return;
+    }
+
     const animations = circles.map(({ ref, duration, direction }) => {
       const element = ref.current;
       if (!element) return null;

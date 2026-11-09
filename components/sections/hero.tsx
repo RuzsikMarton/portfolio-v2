@@ -1,6 +1,6 @@
 'use client';
 import AnimatedCircle from '../animations/animated-circle';
-import HeroSpotlight from '../ui/hero-spotlight';
+import HeroSpotlight from '../animations/hero-spotlight';
 import { useEffect } from 'react';
 import { animate, scrambleText } from 'animejs';
 import { useRef } from 'react';
@@ -19,8 +19,8 @@ const HeroSection = () => {
   const firstnameRef = useRef(null);
   const lastnameRef = useRef(null);
   const borderRef = useRef(null);
-  const shadowRef = useRef(null);
-  const imageRef = useRef(null);
+  const shadowRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (
@@ -31,6 +31,14 @@ const HeroSection = () => {
       !imageRef.current
     )
       return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      imageRef.current.style.opacity = '1';
+      shadowRef.current.style.opacity = '1';
+      return;
+    }
 
     animate(shadowRef.current, {
       opacity: [0, 1],
