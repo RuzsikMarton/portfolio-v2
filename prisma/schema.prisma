@@ -76,6 +76,7 @@ model ProjectTranslation {
   id          Int      @id @default(autoincrement())
   locale      Locale   @default(sk)
   title       String
+  subtitle    String
   description String
   tags        String[]
   overview    String?

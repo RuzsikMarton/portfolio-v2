@@ -37,9 +37,9 @@ export async function createProject(_prev: FormState, formData: FormData): Promi
       order: (lastProject?.order ?? 0) + 1,
       projectTranslations: {
         create: [
-          { locale: 'en', title: '', description: '', tags: [], highlights: [] },
-          { locale: 'hu', title: '', description: '', tags: [], highlights: [] },
-          { locale: 'sk', title: '', description: '', tags: [], highlights: [] },
+          { locale: 'en', title: '', subtitle: '', description: '', tags: [], highlights: [] },
+          { locale: 'hu', title: '', subtitle: '', description: '', tags: [], highlights: [] },
+          { locale: 'sk', title: '', subtitle: '', description: '', tags: [], highlights: [] },
         ],
       },
     },
@@ -78,6 +78,7 @@ const translationSchema = z.array(
   z.object({
     locale: z.enum(Locale),
     title: z.string().trim().max(50),
+    subtitle: z.string().trim().max(100),
     description: z.string().trim().max(500),
     tags: z.array(z.string().trim().max(50)),
     overview: z.string().trim().max(5000).nullable(),
@@ -193,6 +194,7 @@ export const updateProject = async (
           },
           data: {
             title: t.title,
+            subtitle: t.subtitle,
             description: t.description,
             tags: t.tags,
             overview: t.overview,

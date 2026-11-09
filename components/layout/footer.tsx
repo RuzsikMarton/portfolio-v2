@@ -4,7 +4,7 @@ import { IconBrandFacebook, IconBrandGithub, IconBrandLinkedin } from '@tabler/i
 
 const Footer = () => {
   return (
-    <div className="relative bg-bg container mx-auto py-8 mt-16">
+    <div className="relative container mx-auto py-8 mt-16">
       <div className="relative flex flex-col md:flex-row justify-between items-center z-10">
         <h2 className="text-xl">Márton László Ruzsik</h2>
         <div className="flex gap-6 mt-3 md:mt-0">
@@ -37,9 +37,10 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 bg-grid-white">
-        <div className="pointer-events-none absolute inset-0 bg-bg [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_80%)]" />
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 bg-grid-white [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_80%)]"
+      />
     </div>
   );
 };

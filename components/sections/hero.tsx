@@ -1,5 +1,6 @@
 'use client';
 import AnimatedCircle from '../animations/animated-circle';
+import HeroSpotlight from '../ui/hero-spotlight';
 import { useEffect } from 'react';
 import { animate, scrambleText } from 'animejs';
 import { useRef } from 'react';
@@ -70,6 +71,7 @@ const HeroSection = () => {
           >
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center bg-bg [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_80%)]" />
           </div>
+          <HeroSpotlight />
           <div className="flex justify-center relative z-5">
             <div className="container mx-auto w-full">
               <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">

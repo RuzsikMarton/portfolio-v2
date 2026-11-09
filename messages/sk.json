@@ -5,6 +5,10 @@
     "tagline": "Full-stack vývojár, web projekty, portfólio",
     "city": "Nové zámky"
   },
+  "loading": {
+    "projects": "Načítavam projekty",
+    "project": "Načítavam projekt"
+  },
   "nav": {
     "about": "O mne",
     "projects": "Projekty",
@@ -74,5 +78,8 @@
     "title": "Kontaktujte ma",
     "description": "Aktuálne hľadám nové príležitosti — kontaktujte ma, ak si myslíte, že by som bol pre váš tím alebo projekt vhodný.",
     "button": "Napíšte mi"
+  },
+  "projectpage": {
+    "back": "Projekty"
   }
 }

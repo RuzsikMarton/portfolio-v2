@@ -133,6 +133,55 @@
     background-size: 80px 80px;
   }
 
+  .gradient-blob {
+    position: absolute;
+    width: var(--blob-size);
+    height: var(--blob-size);
+    top: calc(50% - var(--blob-size) / 2);
+    left: calc(50% - var(--blob-size) / 2);
+    background: radial-gradient(circle at center, rgb(var(--blob-color) / 0.8) 0, rgb(var(--blob-color) / 0) 50%)
+      no-repeat;
+    mix-blend-mode: hard-light;
+    transform-origin: var(--blob-origin);
+    animation: var(--blob-anim) var(--blob-duration) linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes blob-vertical {
+    0%,
+    100% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+  }
+
+  @keyframes blob-circle {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes blob-horizontal {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+    50% {
+      transform: translateX(50%) translateY(10%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-blob {
+      animation: none !important;
+    }
+  }
+
   .reveal-section {
     opacity: 0;
     transform: translateY(50px);

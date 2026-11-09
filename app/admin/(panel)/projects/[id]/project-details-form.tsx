@@ -12,6 +12,7 @@ import { Locale } from '@/prisma/generated/prisma/enums';
 interface Translation {
   id?: number;
   title: string;
+  subtitle: string;
   description: string;
   locale: Locale;
   tags: string[];
@@ -209,6 +210,18 @@ const ProjectDetailsForm = ({ project }: { project: Props }) => {
             id="translation-title"
             value={activeTranslation.title}
             onChange={(e) => updateTranslation(activeLocale, 'title', e.target.value)}
+            className="field-input"
+            maxLength={50}
+          />
+        </div>
+        <div>
+          <label htmlFor="translation-subtitle" className="field-label">
+            Subtitle ({activeLocale.toUpperCase()})
+          </label>
+          <input
+            id="translation-subtitle"
+            value={activeTranslation.subtitle}
+            onChange={(e) => updateTranslation(activeLocale, 'subtitle', e.target.value)}
             className="field-input"
             maxLength={100}
           />

@@ -5,6 +5,10 @@
     "tagline": "Full-stack fejlesztő, portfólió, web projektek",
     "city": "Érsekújvár"
   },
+  "loading": {
+    "projects": "Projektek betöltése",
+    "project": "Projekt betöltése"
+  },
   "nav": {
     "about": "Rólam",
     "projects": "Projektek",
@@ -74,5 +78,8 @@
     "title": "Lépj kapcsolatba",
     "description": "Jelenleg új lehetőségeket keresek — lépjünk kapcsolatba, ha úgy gondolja, hogy nagyszerűen illenének a csapatába vagy projektjébe.",
     "button": "Beszéljünk"
+  },
+  "projectpage": {
+    "back": "Projektek"
   }
 }

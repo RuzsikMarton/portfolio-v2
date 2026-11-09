@@ -5,6 +5,10 @@
     "tagline": "Full-stack developer, developer portfolio, web projects",
     "city": "Nové zámky"
   },
+  "loading": {
+    "projects": "Loading projects",
+    "project": "Loading project"
+  },
   "nav": {
     "about": "About",
     "projects": "Projects",
@@ -74,5 +78,8 @@
     "title": "Get in touch",
     "description": "I'm currently exploring new opportunities — let's connect if you think I'd be a great fit for your team or project.",
     "button": "Let's talk"
+  },
+  "projectpage": {
+    "back": "Projects"
   }
 }

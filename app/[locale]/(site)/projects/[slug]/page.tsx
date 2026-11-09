@@ -2,9 +2,9 @@ import { getProject } from '@/lib/queries';
 import { PROJECT_SLUGS } from '@/lib/catalog';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
-import WipContent from '@/components/ui/wip-content';
-import { getTranslations } from 'next-intl/server';
 import Footer from '@/components/layout/footer';
+import PorjectView from '@/components/projects/project-view';
+import ProjectsLoading from '@/components/projects/projects-loading';
 
 type Props = {
   params: Promise<{
@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 
 export default async function ProjectPage({ params }: Props) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<ProjectsLoading loading="project" />}>
       <ProjectContent params={params} />
     </Suspense>
   );
@@ -28,13 +28,10 @@ async function ProjectContent({ params }: Props) {
   const { slug } = await params;
   const project = await getProject(slug);
   if (!project) return notFound();
-  const t = await getTranslations('projectsPage');
   return (
-    <>
-      <div className="flex min-h-[calc(100vh-20rem)] flex-col items-center justify-center px-4 text-center">
-        <WipContent title={t('title')} text={t('wip')} />
-      </div>
+    <div className="flex flex-col mx-auto w-full min-h-[calc(100vh-20rem)] max-w-7xl">
+      <PorjectView project={project} translation={project.projectTranslations[0]} />
       <Footer />
-    </>
+    </div>
   );
 }
