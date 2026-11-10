@@ -53,7 +53,7 @@ export default function HeroSpotlight() {
     <div
       ref={containerRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-10 overflow-hidden mix-blend-screen"
+      className="pointer-events-none fixed inset-0 z-10 overflow-hidden mix-blend-screen [@media(pointer:coarse)]:hidden motion-reduce:hidden"
       style={{ opacity: MAX_OPACITY }}
     >
       <div className="absolute inset-0 blur-3xl">

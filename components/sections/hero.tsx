@@ -2,7 +2,7 @@
 import AnimatedCircle from '../animations/animated-circle';
 import HeroSpotlight from '../animations/hero-spotlight';
 import { useEffect } from 'react';
-import { animate, scrambleText } from 'animejs';
+import { animate } from 'animejs';
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -16,56 +16,58 @@ import Image from 'next/image';
 
 const HeroSection = () => {
   const t = useTranslations('hero');
-  const firstnameRef = useRef(null);
-  const lastnameRef = useRef(null);
-  const borderRef = useRef(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const borderRef = useRef<SVGSVGElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (
-      !firstnameRef.current ||
-      !lastnameRef.current ||
-      !borderRef.current ||
-      !shadowRef.current ||
-      !imageRef.current
-    )
-      return;
+    if (!textRef.current || !borderRef.current || !shadowRef.current || !imageRef.current) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
+      textRef.current.style.opacity = '1';
       imageRef.current.style.opacity = '1';
       shadowRef.current.style.opacity = '1';
       return;
     }
 
+    animate(textRef.current, {
+      opacity: [0, 1],
+      duration: 1500,
+      delay: 500,
+      ease: 'in(2)',
+      onComplete: () => {
+        textRef.current!.style.willChange = 'auto';
+      },
+    });
     animate(shadowRef.current, {
       opacity: [0, 1],
       duration: 1000,
       delay: 1000,
-      ease: 'out(2)',
+      ease: 'in(2)',
+      onComplete: () => {
+        shadowRef.current!.style.willChange = 'auto';
+      },
     });
     animate(borderRef.current, {
       opacity: [0, 1],
       duration: 1000,
-      delay: 1300,
-      ease: 'out(2)',
+      delay: 1250,
+      ease: 'in(2)',
+      onComplete: () => {
+        borderRef.current!.style.willChange = 'auto';
+      },
     });
     animate(imageRef.current, {
       opacity: [0, 1],
-      duration: 2000,
-      delay: 1600,
-      ease: 'out(2)',
-    });
-    animate([firstnameRef.current, lastnameRef.current], {
-      innerHTML: scrambleText({
-        revealRate: 2,
-        duration: 4000,
-        ease: 'outCirc',
-        from: 'random',
-        settleDuration: 2000,
-      }),
+      duration: 1000,
+      delay: 1700,
+      ease: 'in(2)',
+      onComplete: () => {
+        imageRef.current!.style.willChange = 'auto';
+      },
     });
   }, []);
 
@@ -83,7 +85,10 @@ const HeroSection = () => {
           <div className="flex justify-center relative z-5">
             <div className="container mx-auto w-full">
               <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
-                <div className="text-center xl:text-left order-2 xl:order-none">
+                <div
+                  ref={textRef}
+                  className="text-center xl:text-left order-2 xl:order-none opacity-0 will-change-[opacity]"
+                >
                   <div className="leading-loose">
                     <span title="Fullstack Developer" className="text-2xl">
                       Fullstack Developer
@@ -91,12 +96,8 @@ const HeroSection = () => {
                     <div title="Márton Ruzsik" className="text-7xl font-bold leading-tight mb-6">
                       {' '}
                       <p>{t('title')}</p>
-                      <p ref={firstnameRef} className="text-accent">
-                        {t('firstname')}
-                      </p>
-                      <p ref={lastnameRef} className="text-accent">
-                        {t('lastname')}
-                      </p>
+                      <p className="text-accent">{t('firstname')}</p>
+                      <p className="text-accent">{t('lastname')}</p>
                     </div>
                     <div className="mb-9 text-white/80 max-w-125 leading-loose">{t('motto')}</div>
                     <div className="flex flex-col xl:flex-row gap-6 xl:items-center">
@@ -153,14 +154,14 @@ const HeroSection = () => {
                   <div className="relative w-72 h-72 xl:w-120 xl:h-120">
                     <AnimatedCircle borderRef={borderRef} />
                     <div
-                      className="w-full h-full rounded-full p-3 shadow-md shadow-accent opacity-0"
+                      className="w-full h-full rounded-full p-3 shadow-md shadow-accent opacity-0 will-change-[opacity]"
                       ref={shadowRef}
                     >
                       <div className="w-full h-full rounded-full relative overflow-hidden">
                         <Image
                           src="/github.webp"
                           alt="Me"
-                          className="rounded-full object-cover opacity-0"
+                          className="rounded-full object-cover opacity-0 will-change-[opacity]"
                           width={500}
                           height={500}
                           preload

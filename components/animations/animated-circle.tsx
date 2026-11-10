@@ -3,6 +3,8 @@
 import { Ref, useEffect, useRef } from 'react';
 import { animate } from 'animejs';
 
+const HERO_FADE_END_MS = 3000;
+
 // Animated rotating circles background around hero image
 export default function AnimatedCircle({ borderRef }: { borderRef?: Ref<SVGSVGElement> }) {
   const circle1Ref = useRef<SVGCircleElement>(null);
@@ -22,29 +24,45 @@ export default function AnimatedCircle({ borderRef }: { borderRef?: Ref<SVGSVGEl
       return;
     }
 
-    const animations = circles.map(({ ref, duration, direction }) => {
-      const element = ref.current;
-      if (!element) return null;
+    // Wait for the hero fade-ins (image ends ~3.5s) so rotation doesn't compete with them.
+    let animations: Array<ReturnType<typeof animate> | null> = [];
+    let idleId: number | undefined;
 
-      element.style.transformBox = 'fill-box';
-      element.style.transformOrigin = 'center';
+    const start = () => {
+      animations = circles.map(({ ref, duration, direction }) => {
+        const element = ref.current;
+        if (!element) return null;
 
-      return animate(element, {
-        rotate: direction,
-        duration,
-        ease: 'outBounce',
-        loop: true,
+        element.style.transformBox = 'fill-box';
+        element.style.transformOrigin = 'center';
+
+        return animate(element, {
+          rotate: direction,
+          duration,
+          ease: 'outBounce',
+          loop: true,
+        });
       });
-    });
+    };
+
+    const timeoutId = window.setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(start, { timeout: 1000 });
+      } else {
+        start();
+      }
+    }, HERO_FADE_END_MS);
 
     return () => {
+      window.clearTimeout(timeoutId);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
       animations.forEach((animation) => animation?.cancel());
     };
   }, []);
 
   return (
     <svg
-      className="pointer-events-none absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] overflow-visible opacity-0"
+      className="pointer-events-none absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] overflow-visible opacity-0 will-change-[opacity]"
       viewBox="0 0 506 506"
       fill="none"
       aria-hidden="true"
