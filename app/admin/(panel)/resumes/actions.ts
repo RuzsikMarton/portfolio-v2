@@ -10,10 +10,19 @@ import { revalidatePath } from 'next/cache';
 export const uploadCV = async ({ file, locale }: { file: File; locale: Locale }) => {
   await requireAdmin();
 
-  const blob = await put(`resumes/cv${locale}.pdf`, file, {
+  const key = urlKey[locale];
+
+  // Get the previous URL
+  const settings = await db.settings.findUnique({
+    where: { id: 1 },
+    select: { [key]: true },
+  });
+
+  const oldUrl = settings?.[key];
+
+  const blob = await put(`resumes/cv${locale}-${Date.now()}.pdf`, file, {
     access: 'public',
     addRandomSuffix: false,
-    allowOverwrite: true,
     contentType: 'application/pdf',
   });
 
@@ -21,6 +30,10 @@ export const uploadCV = async ({ file, locale }: { file: File; locale: Locale })
     where: { id: 1 },
     data: { [urlKey[locale]]: blob.url },
   });
+
+  if (oldUrl && oldUrl !== blob.url) {
+    await del(oldUrl);
+  }
 
   revalidatePath('/admin/resumes');
   return { success: true, url: blob.url };

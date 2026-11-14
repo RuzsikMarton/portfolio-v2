@@ -27,6 +27,7 @@ const ResumeEdit = ({ resumes }: Props) => {
   const [selectedLocale, setSelectedLocale] = useState<Locale | null>(null);
 
   const uploadResume = async (file: File, locale: Locale) => {
+    console.log(file, locale);
     startTransition(async () => {
       try {
         const res = await uploadCV({ file, locale });
@@ -81,7 +82,7 @@ const ResumeEdit = ({ resumes }: Props) => {
                 <IconFileTypePdf className="text-red-400 size-8" />
 
                 <div className={cn('text-sm', url ? 'text-ink' : 'text-ink-2')}>
-                  {url ? url.slice(-8) : 'No file uploaded yet'}
+                  {url ? url.slice(-22) : 'No file uploaded yet'}
                   <p className="text-xs font-extralight">PDF document</p>
                 </div>
               </div>
