@@ -16,3 +16,9 @@ export const statuses = [
   { value: 'archived', label: 'Archived' },
   { value: 'development', label: 'In development' },
 ];
+
+export const urlKey = {
+  sk: 'cvSkUrl',
+  en: 'cvEnUrl',
+  hu: 'cvHuUrl',
+} as const;

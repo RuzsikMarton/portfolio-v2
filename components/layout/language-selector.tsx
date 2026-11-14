@@ -53,7 +53,7 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative z-20">
       <button
         type="button"
         aria-expanded={open}

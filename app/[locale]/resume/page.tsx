@@ -3,11 +3,10 @@ import ResumeViewer from '@/components/ui/resume-viewer';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { title: 'Márton Ruzsik | Resume' };
+  return { title: 'Resume | Márton Ruzsik' };
 }
 
 const ResumePage = async () => {
-  // To DO get pdf from server based on locale
   return (
     <Suspense
       fallback={

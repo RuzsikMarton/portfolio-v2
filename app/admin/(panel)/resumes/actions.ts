@@ -1,16 +1,11 @@
 'use server';
 
 import { Locale } from '@/i18n/config';
+import { urlKey } from '@/lib/const';
 import { db } from '@/lib/prisma';
 import { requireAdmin } from '@/lib/session';
 import { del, put } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
-
-const urlKey = {
-  sk: 'cvSkUrl',
-  en: 'cvEnUrl',
-  hu: 'cvHuUrl',
-} as const;
 
 export const uploadCV = async ({ file, locale }: { file: File; locale: Locale }) => {
   await requireAdmin();

@@ -4,6 +4,7 @@ import { db } from './prisma';
 import { Locale } from '@/i18n/config';
 import { getLocale } from 'next-intl/server';
 import { ProjectDetail } from './types';
+import { urlKey } from './const';
 
 /** will get project slugs and updatedAt from db later for sitemap */
 
@@ -79,4 +80,14 @@ export async function getLastProject() {
     orderBy: { order: 'desc' },
     select: { slug: true, order: true },
   });
+}
+
+/** resume based on locale */
+export async function getResume() {
+  const locale = (await getLocale()) as Locale;
+
+  const resume = await db.settings.findFirst({
+    select: { [urlKey[locale]]: true },
+  });
+  return resume?.[urlKey[locale]] ?? null;
 }
