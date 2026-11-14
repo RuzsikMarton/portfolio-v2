@@ -56,7 +56,7 @@ export default function AnimatedCircle({ borderRef }: { borderRef?: Ref<SVGSVGEl
     return () => {
       window.clearTimeout(timeoutId);
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
-      animations.forEach((animation) => animation?.cancel());
+      animations.forEach((animation) => animation?.revert());
     };
   }, []);
 

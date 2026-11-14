@@ -28,11 +28,15 @@ const ProjectView = ({ project, translation }: Props) => {
       return;
     }
 
-    animate(section, {
+    const animation = animate(section, {
       opacity: [0, 1],
       duration: 1500,
       ease: 'in(4)',
     });
+
+    return () => {
+      animation.revert();
+    };
   }, []);
 
   const details = [
@@ -73,7 +77,7 @@ const ProjectView = ({ project, translation }: Props) => {
   return (
     <section
       ref={sectionRef}
-      className="w-full max-w-5xl mx-auto px-5 sm:px-10 pt-2 opacity-0 motion-reduce:opacity-100 "
+      className="w-full max-w-5xl mx-auto px-5 sm:px-10 pt-2 opacity-0 motion-reduce:opacity-100 pb-24"
     >
       <Link
         href={`/projects`}

@@ -25,11 +25,12 @@ const ContactSection = () => {
       return;
     }
 
+    let animation: ReturnType<typeof animate> | null = null;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
 
-        animate(contact, {
+        animation = animate(contact, {
           translateY: [50, 0],
           opacity: [0, 1],
           duration: 800,
@@ -40,6 +41,10 @@ const ContactSection = () => {
       { threshold: 0.15 }
     );
     observer.observe(contact);
+    return () => {
+      animation?.revert();
+      observer.disconnect();
+    };
   }, []);
 
   return (

@@ -48,7 +48,7 @@ export default function CountUp({ value, duration = 1500 }: CountUpProps) {
 
     return () => {
       observer.disconnect();
-      if (animation) animation.cancel();
+      if (animation) animation.revert();
     };
   }, [value, duration]);
 

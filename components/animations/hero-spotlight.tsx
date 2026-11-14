@@ -36,7 +36,7 @@ export default function HeroSpotlight() {
       ([entry]) => {
         container.style.opacity = String(MAX_OPACITY * entry.intersectionRatio);
       },
-      { threshold: Array.from({ length: 21 }, (_, i) => i / 20) },
+      { threshold: Array.from({ length: 21 }, (_, i) => i / 20) }
     );
     observer.observe(hero);
 

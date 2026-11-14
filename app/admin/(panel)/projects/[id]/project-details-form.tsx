@@ -9,24 +9,7 @@ import { Toggle } from '@/components/admin/toggle';
 import HighlightEditor from '@/components/admin/highlight-editor';
 import { Locale } from '@/prisma/generated/prisma/enums';
 import { roles, statuses } from '@/lib/const';
-
-interface Translation {
-  id?: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  locale: Locale;
-  tags: string[];
-  overview: string | null;
-  highlights: string[];
-
-  stat1: string | null;
-  stat2: string | null;
-  stat3: string | null;
-  stat1Value: string | null;
-  stat2Value: string | null;
-  stat3Value: string | null;
-}
+import { Translation } from '@/lib/types';
 
 interface Props {
   id: number;

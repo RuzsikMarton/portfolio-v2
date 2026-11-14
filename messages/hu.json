@@ -63,10 +63,6 @@
     "text": "Úgy tűnik, az oldal egy másik dimenzióba tűnt el. Próbálj visszatérni a főoldalra.",
     "home": "Vissza a főoldalra"
   },
-  "projectsPage": {
-    "title": "Projektek",
-    "wip": "Ez az oldal fejlesztés alatt áll. Nézz vissza hamarosan!"
-  },
   "projects": {
     "title": "Néhány projektem",
     "featured": "Kiemelt projekt",
@@ -108,5 +104,14 @@
     "visit": "Megtekintés",
     "source": "Forráskód",
     "pdf": "Szakdolgozat (PDF)"
+  },
+  "projectsPage": {
+    "title": "Projektek",
+    "back": "Főoldal",
+    "header": "Ötletekből született <products>termékek</products>, <experiments>kísérletek</experiments> és <experiences>megoldások</experiences>.",
+    "description": "Válogatás az általam készített projektekből.",
+    "projects": "projekt",
+    "view": "Projekt megtekintése",
+    "wip": "Ez az oldal fejlesztés alatt áll. Nézz vissza hamarosan!"
   }
 }

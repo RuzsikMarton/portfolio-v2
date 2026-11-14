@@ -63,10 +63,6 @@
     "text": "Zdá sa, že stránka zmizla v inej dimenzii. Skús sa vrátiť na hlavnú stránku.",
     "home": "Späť na úvod"
   },
-  "projectsPage": {
-    "title": "Projekty",
-    "wip": "Táto stránka je vo vývoji. Vráťte sa čoskoro!"
-  },
   "projects": {
     "title": "Niektoré z mojich projektov",
     "featured": "Vybraný projekt",
@@ -108,5 +104,14 @@
     "visit": "Navštíviť",
     "source": "Zdrojový kód",
     "pdf": "Čítať prácu (PDF)"
+  },
+  "projectsPage": {
+    "title": "Projekty",
+    "back": "Domov",
+    "header": "Nápady premenené na <products>produkty</products>, <experiments>experimenty</experiments> a <experiences>riešenia</experiences>.",
+    "description": "Výber projektov, ktoré som vytvoril.",
+    "projects": "projekty",
+    "view": "Zobraziť",
+    "wip": "Táto stránka je vo vývoji. Vráťte sa čoskoro!"
   }
 }

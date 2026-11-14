@@ -1,15 +1,32 @@
-import Footer from '@/components/layout/footer';
+import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
-import WipContent from '@/components/ui/wip-content';
+import { getProjects } from '@/lib/queries';
+import ProjectsLoading from '@/components/projects/projects-loading';
+import ProjectsList from '@/components/projects/projects-list';
+import Footer from '@/components/layout/footer';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('projectsPage');
+  return { title: `${t('title')} | Márton Ruzsik` };
+}
 
 export default async function ProjectsPage() {
-  const t = await getTranslations('projectsPage');
   return (
-    <section>
-      <div className="flex min-h-[calc(100vh-20rem)] flex-col items-center justify-center px-4 text-center">
-        <WipContent title={t('title')} text={t('wip')} />
-      </div>
-      <Footer />
-    </section>
+    <Suspense fallback={<ProjectsLoading loading="projects" />}>
+      <ProjectsContent />
+    </Suspense>
   );
 }
+
+const ProjectsContent = async () => {
+  const projects = await getProjects();
+  if (!projects.length) return null;
+
+  return (
+    <div className="mx-auto w-full min-h-[calc(100vh-20rem)] max-w-7xl">
+      <ProjectsList projects={projects} />
+      <Footer />
+    </div>
+  );
+};

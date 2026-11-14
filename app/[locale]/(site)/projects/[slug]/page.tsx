@@ -1,5 +1,4 @@
-import { getProject } from '@/lib/queries';
-import { PROJECT_SLUGS } from '@/lib/catalog';
+import { getProject, getProjectSlugs } from '@/lib/queries';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import Footer from '@/components/layout/footer';
@@ -13,12 +12,16 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return PROJECT_SLUGS.map((slug) => ({ slug }));
+  const slugs = await getProjectSlugs();
+
+  return slugs.map((slug) => ({
+    slug,
+  }));
 }
 
 export default async function ProjectPage({ params }: Props) {
   return (
-    <Suspense fallback={<ProjectsLoading loading="project" />}>
+    <Suspense fallback={<ProjectsLoading loading="projects" />}>
       <ProjectContent params={params} />
     </Suspense>
   );
@@ -26,6 +29,7 @@ export default async function ProjectPage({ params }: Props) {
 
 async function ProjectContent({ params }: Props) {
   const { slug } = await params;
+
   const project = await getProject(slug);
   if (!project) return notFound();
   return (

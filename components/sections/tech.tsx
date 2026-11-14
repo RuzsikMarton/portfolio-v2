@@ -39,21 +39,26 @@ const TechSection = () => {
       return;
     }
 
+    let animation: ReturnType<typeof animate> | null = null;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
 
-        animate(section, {
+        animation = animate(section, {
           translateY: [50, 0],
           opacity: [0, 1],
           duration: 800,
           ease: 'easeOut',
         });
-        observer.disconnect();
+        observer.unobserve(entry.target);
       },
       { threshold: 0.15 }
     );
     observer.observe(section);
+    return () => {
+      observer.disconnect();
+      animation?.revert();
+    };
   }, []);
 
   return (

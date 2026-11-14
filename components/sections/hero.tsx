@@ -33,42 +33,28 @@ const HeroSection = () => {
       return;
     }
 
-    animate(textRef.current, {
-      opacity: [0, 1],
-      duration: 1500,
-      delay: 500,
-      ease: 'in(2)',
-      onComplete: () => {
-        textRef.current!.style.willChange = 'auto';
-      },
-    });
-    animate(shadowRef.current, {
-      opacity: [0, 1],
-      duration: 1000,
-      delay: 1000,
-      ease: 'in(2)',
-      onComplete: () => {
-        shadowRef.current!.style.willChange = 'auto';
-      },
-    });
-    animate(borderRef.current, {
-      opacity: [0, 1],
-      duration: 1000,
-      delay: 1250,
-      ease: 'in(2)',
-      onComplete: () => {
-        borderRef.current!.style.willChange = 'auto';
-      },
-    });
-    animate(imageRef.current, {
-      opacity: [0, 1],
-      duration: 1000,
-      delay: 1700,
-      ease: 'in(2)',
-      onComplete: () => {
-        imageRef.current!.style.willChange = 'auto';
-      },
-    });
+    const targets = [
+      { el: textRef.current, delay: 500, duration: 1500 },
+      { el: shadowRef.current, delay: 1000, duration: 1000 },
+      { el: borderRef.current, delay: 1250, duration: 1000 },
+      { el: imageRef.current, delay: 1700, duration: 1000 },
+    ];
+
+    const animations = targets.map(({ el, delay, duration }) =>
+      animate(el, {
+        opacity: [0, 1],
+        duration,
+        delay,
+        ease: 'in(2)',
+        onComplete: () => {
+          el.style.willChange = 'auto';
+        },
+      }),
+    );
+
+    return () => {
+      animations.forEach((animation) => animation.revert());
+    };
   }, []);
 
   return (

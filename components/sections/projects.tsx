@@ -38,12 +38,13 @@ const ProjectsSection = () => {
       element.style.transform = 'none';
     });
 
+    let animation: ReturnType<typeof animate> | null = null;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
 
-          animate(entry.target, {
+          animation = animate(entry.target, {
             opacity: [0, 1],
             translateY: [50, 0],
             duration: 1000,
@@ -58,7 +59,10 @@ const ProjectsSection = () => {
 
     elements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      animation?.revert();
+    };
   }, []);
 
   return (

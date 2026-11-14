@@ -19,7 +19,7 @@ const AdminProjectsPage = async () => {
         },
       },
     },
-    orderBy: { order: 'desc' },
+    orderBy: { order: 'asc' },
   });
 
   return (

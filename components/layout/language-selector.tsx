@@ -6,6 +6,7 @@ import { IconCheck, IconChevronDown, IconWorld } from '@tabler/icons-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import Flag from '../ui/flag';
+import { animate } from 'animejs';
 
 const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
   const router = useRouter();
@@ -22,6 +23,22 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
   ];
 
   useEffect(() => {
+    const container = containerRef.current;
+    let animation: ReturnType<typeof animate> | null = null;
+    if (!container) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      animation = animate(container, {
+        opacity: [0, 1],
+        translateY: [-50, 0],
+        delay: 600,
+        duration: 600,
+        ease: 'easeOutQuad',
+      });
+    } else {
+      container.style.opacity = '1';
+      container.style.transform = 'none';
+    }
     const handlePointerDown = (event: PointerEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setOpen(false);
@@ -29,8 +46,8 @@ const LanguageSelector = ({ onSelect }: { onSelect?: () => void }) => {
     };
 
     document.addEventListener('pointerdown', handlePointerDown);
-
     return () => {
+      animation?.revert();
       document.removeEventListener('pointerdown', handlePointerDown);
     };
   }, []);

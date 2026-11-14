@@ -49,10 +49,12 @@ export async function createProject(_prev: FormState, formData: FormData): Promi
 
 export const reorderProjects = async (ids: number[]) => {
   await requireAdmin();
+  console.log(ids);
 
   if (!Array.isArray(ids) || !ids.every(Number.isInteger)) return { error: 'Invalid project IDs' };
 
-  const projects = await db.project.findMany({ select: { id: true } });
+  const projects = await db.project.findMany({ select: { id: true, order: true } });
+  console.log(projects);
 
   if (
     projects.length !== ids.length ||

@@ -63,10 +63,6 @@
     "text": "The page seems to have vanished into another dimension. Try going back home.",
     "home": "Back to home"
   },
-  "projectsPage": {
-    "title": "Projects",
-    "wip": "This page is a work in progress. Check back soon!"
-  },
   "projects": {
     "title": "Some things I've built",
     "featured": "Featured Project",
@@ -108,5 +104,14 @@
     "visit": "Visit site",
     "source": "Source code",
     "pdf": "Read thesis (PDF)"
+  },
+  "projectsPage": {
+    "title": "Projects",
+    "back": "Home",
+    "header": "Ideas turned into <products>products</products>, <experiments>experiments</experiments>, and <experiences>experiences</experiences>.",
+    "description": "A small selection of things I've created.",
+    "projects": "projects",
+    "view": "View project",
+    "wip": "This page is a work in progress. Check back soon!"
   }
 }
