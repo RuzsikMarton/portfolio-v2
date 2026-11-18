@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '3mb',
     },
+    agentUpgrade: 'security',
   },
   cacheComponents: true,
   partialPrefetching: true,
