@@ -2,7 +2,7 @@ import { Locale } from '@/i18n/config';
 import { Project } from '@/prisma/generated/prisma/client';
 
 export interface Translation {
-  id?: number;
+  id: number;
   title: string;
   subtitle: string;
   description: string;
@@ -17,6 +17,7 @@ export interface Translation {
   stat1Value: string | null;
   stat2Value: string | null;
   stat3Value: string | null;
+  projectId: number;
 }
 
 export type ProjectWithTranslation = Project & {

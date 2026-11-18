@@ -1,21 +1,19 @@
 'use client';
 
 import { animate } from 'animejs';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef } from 'react';
-import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
 import { IconArrowRight, IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
-import { Locale } from '@/i18n/config';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
+import { ProjectWithTranslation, Translation } from '@/lib/types';
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ projects }: { projects: ProjectWithTranslation[] }) => {
   const titleRef = useRef<HTMLDivElement>(null);
   const projectRefs = useRef<(HTMLLIElement | null)[]>([]);
   const buttonRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('projects');
-  const locale = useLocale() as Locale;
 
   useEffect(() => {
     const elements: HTMLElement[] = [
@@ -38,18 +36,20 @@ const ProjectsSection = () => {
       element.style.transform = 'none';
     });
 
-    let animation: ReturnType<typeof animate> | null = null;
+    const animations: ReturnType<typeof animate>[] = [];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
 
-          animation = animate(entry.target, {
-            opacity: [0, 1],
-            translateY: [50, 0],
-            duration: 1000,
-            ease: 'easeOut',
-          });
+          animations.push(
+            animate(entry.target, {
+              opacity: [0, 1],
+              translateY: [50, 0],
+              duration: 1000,
+              ease: 'easeOut',
+            })
+          );
 
           observer.unobserve(entry.target);
         });
@@ -61,9 +61,17 @@ const ProjectsSection = () => {
 
     return () => {
       observer.disconnect();
-      animation?.revert();
+      animations.forEach((animation) => animation.revert());
     };
   }, []);
+
+  const translatedProjects = projects.filter(
+    (
+      project
+    ): project is ProjectWithTranslation & {
+      translation: Translation;
+    } => project.translation !== null
+  );
 
   return (
     <section id="projects" className="mt-24">
@@ -76,12 +84,12 @@ const ProjectsSection = () => {
         </div>
       </div>
       <ul className="list-none space-y-20 p-0 md:space-y-32 container mx-auto mt-12">
-        {projects.map((project, i) => {
+        {translatedProjects.map((project, i) => {
           const isOdd = i % 2 === 0;
 
           return (
             <li
-              key={project.title}
+              key={project.id}
               ref={(el) => {
                 projectRefs.current[i] = el;
               }}
@@ -103,24 +111,28 @@ const ProjectsSection = () => {
                       href={`/projects/${project.slug}`}
                       className="transition-colors hover:text-accent"
                     >
-                      {project.title}
+                      {project.translation.title ?? project.title}
                     </Link>
                   </h3>
 
                   {/* description */}
-                  <div className="relative z-20 rounded-lg bg-accent-dark/95 p-6 text-slate-300 shadow-md hover:shadow-2xl backdrop-blur-sm md:bg-slate-800 md:p-7 transition-shadow duration-200">
-                    <p className="leading-relaxed">{project[locale].description}</p>
-                  </div>
+                  {(project.translation.description || project.translation.subtitle) && (
+                    <div className="relative z-20 rounded-lg bg-accent-dark/95 p-6 text-slate-300 shadow-md hover:shadow-2xl backdrop-blur-sm md:bg-slate-800 md:p-7 transition-shadow duration-200">
+                      <p className="leading-relaxed">
+                        {project.translation.description || project.translation.subtitle}
+                      </p>
+                    </div>
+                  )}
 
                   {/* tags */}
-                  {project.tags?.length && (
+                  {project.translation.tags?.length && project.translation.tags?.length > 0 && (
                     <ul
                       className={cn(
                         'relative z-20 mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-400',
                         isOdd ? 'md:justify-end' : 'md:justify-start'
                       )}
                     >
-                      {project.tags.map((tag) => (
+                      {project.translation?.tags.map((tag) => (
                         <li key={tag}>{tag}</li>
                       ))}
                     </ul>
@@ -166,18 +178,21 @@ const ProjectsSection = () => {
                   isOdd ? 'md:col-start-1 md:col-end-8' : 'md:col-start-6 md:col-end-13'
                 )}
               >
-                <Link href={`/projects/${project.slug}`} className="absolute inset-0 block">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} screenshot`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 60vw"
-                    className="object-cover rounded-xl grayscale brightness-90 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100"
-                  />
+                {project.featuredPhoto && (
+                  <Link href={`/projects/${project.slug}`} className="absolute inset-0 block">
+                    <Image
+                      src={project.featuredPhoto}
+                      alt={`${project.title} screenshot`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                      className="object-cover rounded-xl grayscale brightness-90 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100"
+                    />
 
-                  {/* mix-blend-screen add later maybe */}
-                  <span className="pointer-events-none rounded-xl absolute inset-0 bg-accent/20 mix-blend-screen transition-opacity duration-500 group-hover:opacity-0" />
-                </Link>
+                    {/* mix-blend-screen add later maybe */}
+                    <span className="pointer-events-none rounded-xl absolute inset-0 bg-accent/20 mix-blend-screen transition-opacity duration-500 group-hover:opacity-0" />
+                  </Link>
+                )}
+
                 {/* overlay mobile */}
                 <div className="pointer-events-none absolute inset-0 bg-bg/85 md:hidden" />
               </div>

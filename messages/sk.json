@@ -5,6 +5,15 @@
     "tagline": "Full-stack vývojár, web projekty, portfólio",
     "city": "Nové zámky"
   },
+  "errors": {
+    "title": "Chyba",
+    "description": "Nastala neočakávaná chyba. Skúste to znova neskôr.",
+    "retry": "Skúsiť znova",
+    "aboutTitle": "Ups... Sekcia O mne nie je dostupná",
+    "aboutDesc": "Momentálne sa nám nepodarilo načítať informácie o mne. Skúste to znova neskôr.",
+    "projectsTitle": "Ups... Projekty nie sú dostupné",
+    "projectsDesc": "Momentálne sa nám nepodarilo načítať projekty. Skúste to znova neskôr."
+  },
   "loading": {
     "projects": "Načítavam projekty",
     "project": "Načítavam projekt"

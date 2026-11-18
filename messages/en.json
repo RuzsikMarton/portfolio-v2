@@ -5,6 +5,15 @@
     "tagline": "Full-stack developer, developer portfolio, web projects",
     "city": "Nové zámky"
   },
+  "errors": {
+    "title": "Error",
+    "description": "Something went wrong here, try again later.",
+    "retry": "Try again",
+    "aboutTitle": "Oops... About section unavailable",
+    "aboutDesc": "We couldn't load the information about me right now. Please try again later.",
+    "projectsTitle": "Oops... Projects unavailable",
+    "projectsDesc": "We couldn't load the projects right now. Please try again later."
+  },
   "loading": {
     "projects": "Loading projects",
     "project": "Loading project"

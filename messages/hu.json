@@ -5,6 +5,15 @@
     "tagline": "Full-stack fejlesztő, portfólió, web projektek",
     "city": "Érsekújvár"
   },
+  "errors": {
+    "title": "Hiba",
+    "description": "Valami hiba történt. Kérjük, próbáld meg később újra.",
+    "retry": "Próbáld újra",
+    "aboutTitle": "Hoppá... A bemutatkozó rész nem érhető el",
+    "aboutDesc": "Jelenleg nem sikerült betölteni a rólam szóló információkat. Kérjük, próbáld meg később újra.",
+    "projectsTitle": "Hoppá... A projektek nem érhetők el",
+    "projectsDesc": "Jelenleg nem sikerült betölteni a projekteket. Kérjük, próbáld meg később újra."
+  },
   "loading": {
     "projects": "Projektek betöltése",
     "project": "Projekt betöltése"

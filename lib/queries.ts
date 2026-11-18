@@ -62,6 +62,19 @@ export async function getCachedProject(
   return project ? { ...project, translation: project.projectTranslations[0] ?? null } : null;
 }
 
+/** get cached featured projects with translation */
+export async function getCachedFeaturedProjects(locale: Locale) {
+  'use cache';
+  cacheTag('projects');
+  cacheLife('hours');
+  const projects = await db.project.findMany({
+    where: { featured: true },
+    orderBy: { order: 'asc' },
+    include: { projectTranslations: { where: { locale } } },
+  });
+  return projects.map((p) => ({ ...p, translation: p.projectTranslations[0] ?? null }));
+}
+
 /** get project by slug using locale */
 export async function getProject(slug: string) {
   const locale = (await getLocale()) as Locale;
@@ -82,6 +95,12 @@ export async function getLastProject() {
   });
 }
 
+// featured projects for portfolio
+export async function getFeaturedProjects() {
+  const locale = (await getLocale()) as Locale;
+  return getCachedFeaturedProjects(locale);
+}
+
 /** resume based on locale */
 export async function getResume() {
   const locale = (await getLocale()) as Locale;
@@ -92,9 +111,12 @@ export async function getResume() {
   return resume?.[urlKey[locale]] ?? null;
 }
 
+// about stats query for portfolio
 export async function getAboutStats() {
   'use cache';
+
   cacheTag('about');
   cacheLife('hours');
+
   return db.about.findFirst();
 }
