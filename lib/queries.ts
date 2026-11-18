@@ -91,3 +91,10 @@ export async function getResume() {
   });
   return resume?.[urlKey[locale]] ?? null;
 }
+
+export async function getAboutStats() {
+  'use cache';
+  cacheTag('about');
+  cacheLife('hours');
+  return db.about.findFirst();
+}

@@ -73,9 +73,15 @@ function LogoutButton() {
 function PageSkeleton() {
   return (
     <div className="container-page animate-pulse pt-8" aria-hidden="true">
-      <div className="h-10 w-48 rounded-xl bg-surface-2" />
-      <div className="mt-8 h-40 rounded-card bg-surface-2" />
-      <div className="mt-4 h-40 rounded-card bg-surface-2" />
+      <div className="h-12 w-48 rounded-xl bg-surface-2" />
+      <div className="mt-8 grid grid-cols-2 gap-4">
+        <div className="h-28 rounded-card bg-surface-2" />
+        <div className="h-28 rounded-card bg-surface-2" />
+      </div>
+      <div className="mt-3 grid md:grid-cols-2 gap-4">
+        <div className="h-36 rounded-card bg-surface-2" />
+        <div className="h-36 rounded-card bg-surface-2" />
+      </div>
     </div>
   );
 }
